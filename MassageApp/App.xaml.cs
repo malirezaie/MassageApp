@@ -8,7 +8,7 @@ namespace MassageApp
 		{
 			InitializeComponent();
 
-			MainPage = new NavigationPage(new MassageAppPage());
+			MainPage = new MainMasterDetail();
 		}
 
 		protected override void OnStart()
