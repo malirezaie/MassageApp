@@ -15,7 +15,7 @@ namespace MassageApp
 
 		public MainSectionOne()
 		{
-			HeightRequest = 400;
+			HeightRequest = 430;
 
 			MainTitle.Text = "MASSAGE";
 

@@ -1,5 +1,5 @@
 ﻿using System;
-
+using HockeyApp.Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -19,6 +19,9 @@ namespace MassageApp.Droid
 			ToolbarResource = Resource.Layout.Toolbar;
 
 			base.OnCreate(bundle);
+
+
+			CrashManager.Register(this, "cd0602d475ce4079bcf3761406a939ed");
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 

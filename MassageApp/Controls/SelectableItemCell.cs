@@ -73,9 +73,9 @@ namespace MassageApp
 				Constraint.RelativeToView(_TitleView, (parent, view) =>
 				{
 					return (view.Height + 12);//.Width * .5) - 50;
-				}),
-				Constraint.Constant(100),
-				Constraint.Constant(20)
+				})
+				//Constraint.Constant(100),
+				//Constraint.Constant(20)
 			);
 
 

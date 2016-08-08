@@ -16,6 +16,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
+    <ReleaseVersion>1.0</ReleaseVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,6 +36,7 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AndroidSupportedAbis>armeabi-v7a;x86;x86_64;arm64-v8a;armeabi</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -83,6 +85,12 @@
     <Reference Include="Xamarin.Forms.CarouselView">
       <HintPath>..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\MonoAndroid10\Xamarin.Forms.CarouselView.dll</HintPath>
     </Reference>
+    <Reference Include="HockeySDK.AndroidBindings">
+      <HintPath>..\Components\hockeyappandroid-4.1.0.2\lib\android\HockeySDK.AndroidBindings.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeySDK">
+      <HintPath>..\Components\hockeyappandroid-4.1.0.2\lib\android\HockeySDK.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassageApp\MassageApp.csproj">
@@ -129,6 +137,12 @@
   <ItemGroup>
     <Folder Include="Renderers\" />
     <Folder Include="Controls\" />
+  </ItemGroup>
+  <ItemGroup>
+    <XamarinComponentReference Include="hockeyappandroid">
+      <Version>4.1.0.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.23.3.0\build\Xamarin.Android.Support.Vector.Drawable.targets')" />

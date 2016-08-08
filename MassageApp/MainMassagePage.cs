@@ -23,7 +23,7 @@ namespace MassageApp
 			var section1 = new TableSection
 			{
 				new ViewCell(){
-					View = new MainSectionOne(), Height = 400
+					View = new MainSectionOne(), Height = 430
 				}
 
 			};
