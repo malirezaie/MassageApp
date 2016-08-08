@@ -12,7 +12,7 @@ namespace MassageApp
 		{
 			masterPage = new MasterPageCS();
 			Master = masterPage;
-			Detail = new NavigationPage(new DetailPageCS());
+			Detail = new NavigationPage(new MainMassagePage());//new DetailPageCS());
         
     	}
 	}

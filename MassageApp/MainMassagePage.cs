@@ -3,13 +3,16 @@ using Xamarin.Forms;
 
 namespace MassageApp
 {
-	public class TodayPageCS : ContentPage
+	public class MainMassagePage : ContentPage
 	{
 		CardView testCardView;
 		List<CardView> cardViewList;
 
-		public TodayPageCS ()
+		public MainMassagePage ()
 		{
+
+			Title = "MassageApp";
+
 			if (Device.OS == TargetPlatform.iOS)
 			{
 				Icon = "today.png";
@@ -30,30 +33,24 @@ namespace MassageApp
 
 
 			// Setup TableView Sections
-			var section1 = new TableSection()
+			var section1 = new TableSection
 			{
 				new ViewCell(){
-					View = new MainSectionOne(), Height = 300
-				},
-				new ViewCell(){
-					View = new MainSectionOne(), Height = 300
-				},
-				new ViewCell(){
-					View = new MainSectionOne(), Height = 300
+					View = new MainSectionOne(), Height = 400
 				}
 
 			};
 
-			var section2 = new TableSection("Book")
+			var section2 = new TableSection
 			{
 				new ViewCell(){
-					View = new MainSectionTwo()
+					View = new MainSectionTwo(), Height = 300
 				}
 			};
-			var section3 = new TableSection("Book")
+			var section3 = new TableSection
 			{
 				new ViewCell(){
-					View = new MainSectionOne(), Height = 300
+					View = new MainSectionThree(), Height = 300
 				}
 			};
 
@@ -63,25 +60,10 @@ namespace MassageApp
 
 			if (Device.OS == TargetPlatform.Android)
 			{
-
-				tblview = new CustomTableView
-				{
-					Root = new TableRoot
-				{
-					section2
-
-				},
-					Intent = TableIntent.Settings,
-					HasUnevenRows = true,
-				};
-
 				Content = new ScrollView
 				{
-					Content = new MainSectionTwo()
+					Content = new MainPageAndroid()
 				};
-
-					//new MainSectionTwo();
-				
 			}
 
 
@@ -92,7 +74,7 @@ namespace MassageApp
 				{
 					Root = new TableRoot
 					{
-					section3,section3,section3
+						section1,section2,section3
 
 					},
 					Intent = TableIntent.Settings,

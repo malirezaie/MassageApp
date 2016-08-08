@@ -8,9 +8,18 @@ namespace MassageApp
 		public MainSectionThree()
 		{
 
+			HeightRequest = 300;
 
+			StackLayout _content = new StackLayout();
 
+			_content.Children.Add(
+				new Label
+				{
+					Text = "section three"
+				}
+			);
 
+			this.Content = _content;
 
 		}
 	}

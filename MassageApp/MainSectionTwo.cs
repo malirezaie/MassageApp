@@ -3,98 +3,25 @@ using Xamarin.Forms;
 
 namespace MassageApp
 {
-	public class MainSectionTwo : StackLayout
+	public class MainSectionTwo : CardView
 	{
 		public MainSectionTwo()
 		{
 
-			this.Children.Add(
-				new CardView
+			HeightRequest = 300;
+
+			StackLayout _content = new StackLayout();
+
+			_content.Children.Add(
+				new Label
 				{
-					Content = new Label
-					{
-						Text = "Hello #1"
-					},
-					HeightRequest = 300
-					
+					Text = "section two"
 				}
 			);
 
-			this.Children.Add(
-				new CardView
-				{
-					Content = new Label
-					{
-						Text = "Hello #2"
-					},
-					HeightRequest = 300
-
-				}
-			);
-
-			this.Children.Add(
-				new CardView
-				{
-					Content = new Label
-					{
-						Text = "Hello #3"
-					},
-					HeightRequest = 300
-
-				}
-			);
+			this.Content = _content;
 
 		}
 	}
-
-
-	public class MainSectionTwo_Scroll : ScrollView
-	{
-		public MainSectionTwo_Scroll()
-		{
-
-			var _content = new StackLayout(); 
-
-			_content.Children.Add(
-				new CardView
-				{
-					Content = new Label
-					{
-						Text = "Hello #1"
-					},
-					HeightRequest = 300
-
-				}
-			);
-
-			_content.Children.Add(
-				new CardView
-				{
-					Content = new Label
-					{
-						Text = "Hello #2"
-					},
-					HeightRequest = 300
-
-				}
-			);
-
-			_content.Children.Add(
-				new CardView
-				{
-					Content = new Label
-					{
-						Text = "Hello #3"
-					},
-					HeightRequest = 300
-
-				}
-			);
-
-		}
-	}
-
-
-
 }
 

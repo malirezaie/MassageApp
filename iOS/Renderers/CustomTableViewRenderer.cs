@@ -3,8 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using UIKit;
 
-[assembly: ExportRenderer(typeof(MassageApp.CustomTableView), typeof(MassageApp.CustomTableViewRenderer))]
-namespace MassageApp
+[assembly: ExportRenderer(typeof(MassageApp.CustomTableView), typeof(MassageApp.iOS.CustomTableViewRenderer))]
+namespace MassageApp.iOS
 {
 	public class CustomTableViewRenderer : TableViewRenderer
 	{

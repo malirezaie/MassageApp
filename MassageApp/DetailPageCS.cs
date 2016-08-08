@@ -16,11 +16,10 @@ namespace MassageApp
 			}
 			navigationPage.Title = "Schedule";
 
-
-
-			Children.Add (new TodayPageCS ());
+			Children.Add (new MainMassagePage ());
 			Children.Add (navigationPage);
 			Children.Add (new SettingsPageCS ());
+
 		}
 	}
 }

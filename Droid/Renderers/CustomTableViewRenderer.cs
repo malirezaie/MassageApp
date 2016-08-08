@@ -3,8 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 using Android.Graphics.Drawables;
 using MassageApp.Droid;
-[assembly: ExportRenderer(typeof(MassageApp.CustomTableView), typeof(MassageApp.CustomTableViewRenderer))]
-namespace MassageApp
+[assembly: ExportRenderer(typeof(MassageApp.CustomTableView), typeof(MassageApp.Droid.CustomTableViewRenderer))]
+namespace MassageApp.Droid
 {
 	public class CustomTableViewRenderer : TableViewRenderer
 	{
