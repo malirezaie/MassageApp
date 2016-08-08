@@ -55,9 +55,11 @@
     <Compile Include="MainSectionTwo.cs" />
     <Compile Include="CustomTableView.cs" />
     <Compile Include="MainPageAndroid.cs" />
-    <Compile Include="Controls\MassageOptionCell.cs" />
+    <Compile Include="Controls\SelectableItemCell.cs" />
     <Compile Include="Controls\CustomButton.cs" />
     <Compile Include="Interfaces\IPopupControl.cs" />
+    <Compile Include="Controls\AppSection.cs" />
+    <Compile Include="Controls\BookButton.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core">

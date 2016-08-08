@@ -20,6 +20,10 @@ namespace MassageApp
 				new MainSectionThree()
 			);
 
+			this.Children.Add(
+				new BookButton()
+			);
+
 		}
 	}
 

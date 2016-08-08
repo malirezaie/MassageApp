@@ -23,9 +23,6 @@ namespace MassageApp.iOS
 			{
 			});
 
-
-
-
 			string _val = null;
 			//Add Actions
 			var cancelAction = UIAlertAction.Create("Cancel", UIAlertActionStyle.Cancel, alertAction => Console.WriteLine("Cancel was Pressed"));
@@ -43,7 +40,7 @@ namespace MassageApp.iOS
 		}
 
 
-		public Task<string> DisplayAlert(string title, string subtitle, List<string> items)
+		public Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string> items)
 		{
 			var taskCompletionSource = new TaskCompletionSource<string>();
 

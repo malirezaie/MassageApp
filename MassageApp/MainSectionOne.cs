@@ -5,11 +5,11 @@ using Xamarin.Forms;
 
 namespace MassageApp
 {
-	public class MainSectionOne : CardView
+	public class MainSectionOne : AppSection
 	{
 
 		List<MassageOptions> _massageOptions;
-		StackLayout _content;
+		//StackLayout _content;
 		CarouselView _carouselView;
 		List<MassageType> MassageTypes;
 
@@ -17,27 +17,7 @@ namespace MassageApp
 		{
 			HeightRequest = 400;
 
-			_content = new StackLayout();
-
-			Label MainLabel = new Label
-			{
-				Text = "MASSAGE",
-				HorizontalOptions = LayoutOptions.Center,
-				FontAttributes = FontAttributes.Bold,
-				FontSize = 16
-			};
-
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				//MainLabel.FontSize = 16;
-				MainLabel.HeightRequest = 50;
-			}
-			else {
-				//MainLabel.FontSize = 18;
-				MainLabel.HeightRequest = 30;
-			}
-
-			_content.Children.Add(MainLabel);
+			MainTitle.Text = "MASSAGE";
 
 			setUpCarouselView();
 
@@ -148,7 +128,7 @@ namespace MassageApp
 			{
 				//j.OptionSelected = j._options[j.selectedIndex];
 
-				MassageOptionCell _tempCell = new MassageOptionCell
+				SelectableItemCell _tempCell = new SelectableItemCell
 				(j.Title,
 				 j.message,
 				 j._options
@@ -157,12 +137,12 @@ namespace MassageApp
 				var tapGestureRecognizer = new TapGestureRecognizer();
 				tapGestureRecognizer.Tapped += async (s, e) =>
 				{
-					MassageOptionCell _sender = s as MassageOptionCell;
+					SelectableItemCell _sender = s as SelectableItemCell;
 					_sender.BackgroundColor = Color.FromRgb(240, 240, 240);
 
 					//var action = await Application.Current.MainPage.DisplayActionSheet(j.Title, "Cancel", null, _sender._options.ToArray());
 
-					var action = await DependencyService.Get<IPopupControl>().DisplayAlert(j.Title, j.message, j._options);
+					var action = await DependencyService.Get<IPopupControl>().DisplayAlertWithOptions(j.Title, j.message, j._options);
 
 					if (action != null && !action.Equals("Cancel"))
 					{

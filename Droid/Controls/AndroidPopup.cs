@@ -19,7 +19,7 @@ namespace MassageApp.Droid
 		}
 
 
-		public Task<string> DisplayAlert(string title, string subtitle, List<string> items)
+		public Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string> items)
 		{
 			
 			TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();

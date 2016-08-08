@@ -4,7 +4,7 @@ using Xamarin.Forms;
 
 namespace MassageApp
 {
-	public class MassageOptionCell: RelativeLayout
+	public class SelectableItemCell: RelativeLayout
 	{
 
 		public string Title { get; set;}
@@ -16,7 +16,7 @@ namespace MassageApp
 
 		Label _SubTitleView;
 
-		public MassageOptionCell(string _title, string _messagesubtitle, List<string> viewops)
+		public SelectableItemCell(string _title, string _messagesubtitle, List<string> viewops)
 		{
 			
 			Title = _title;
@@ -59,9 +59,9 @@ namespace MassageApp
 				Constraint.RelativeToParent((parent) =>
 				{
 					return parent.Height / 5;//  + view.Height + 10;
-				}),
-				Constraint.Constant(100),
-				Constraint.Constant(20)
+				})
+				//Constraint.Constant(200),
+				//Constraint.Constant(20)
 			);
 
 			Children.Add(
