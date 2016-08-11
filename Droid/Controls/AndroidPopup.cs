@@ -18,6 +18,10 @@ namespace MassageApp.Droid
 			
 		}
 
+		public Task<string> DisplayAddressAlert(string title, string message)
+		{
+			return DisplayAlertWithOptions(title, message, new List<string> { "hello" });
+		}
 
 		public Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string> items)
 		{
@@ -92,10 +96,7 @@ namespace MassageApp.Droid
 		}
 
 
-		public string selectedItem(string title, string subtitle, List<string> items)
-		{
-			throw new NotImplementedException();
-		}
+	
 	}
 }
 

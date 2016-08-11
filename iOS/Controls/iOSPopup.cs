@@ -14,6 +14,37 @@ namespace MassageApp.iOS
 		{
 		}
 
+		public Task<string> DisplayAddressAlert(string title, string message)
+		{
+			var taskCompletionSource = new TaskCompletionSource<string>();
+
+			var alert = UIAlertController.Create(
+			  title, message, UIAlertControllerStyle.Alert);
+
+			alert.AddTextField(textField =>
+			{
+				int j = 10;
+			});
+
+			alert.AddAction(UIAlertAction.Create(
+		  						"Cancel", UIAlertActionStyle.Cancel,
+		  						a => taskCompletionSource.SetResult("Cancel"))
+			               );
+
+			alert.AddAction(UIAlertAction.Create(
+			  					"Okay", UIAlertActionStyle.Default,
+			  					a => taskCompletionSource.SetResult(alert.TextFields[0].Text))
+			               );
+
+			var vc = UIApplication.SharedApplication.KeyWindow.RootViewController;
+
+			vc.PresentViewController(alert, true, null);
+
+			return taskCompletionSource.Task;
+
+		}
+
+		/*
 		public async Task<string> DisplayAlert()
 		{
 			var textInputAlertController = UIAlertController.Create("Text Input Alert", "Hey, input some text", UIAlertControllerStyle.ActionSheet);
@@ -37,7 +68,7 @@ namespace MassageApp.iOS
 			await vc.PresentViewControllerAsync(textInputAlertController, true);
 
 			return _val;
-		}
+		}*/
 
 
 		public Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string> items)

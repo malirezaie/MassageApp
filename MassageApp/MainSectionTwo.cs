@@ -86,6 +86,51 @@ namespace MassageApp
 			}
 
 
+			var tapGestureRecognizer = new TapGestureRecognizer();
+			tapGestureRecognizer.Tapped += async (s, e) =>
+			{
+				Entry _sender = s as Entry;
+				//_sender.BackgroundColor = Color.FromRgb(240, 240, 240);
+
+				var action = await DependencyService.Get<IPopupControl>().DisplayAddressAlert("Enter Address", "enter details");
+
+				if (action != null && !action.Equals("Cancel"))
+				{
+					//int _index = _sender._options.IndexOf(action);
+					_sender.Text = action;
+					//_sender.updateSelection();
+				}
+
+				//_sender.BackgroundColor = Color.Transparent;
+			};
+
+			//AddressText.GestureRecognizers.Add(tapGestureRecognizer);
+
+			AddressText.Focused += async (s, e) =>
+			{
+				/*
+				Device.BeginInvokeOnMainThread(() => 
+				{
+					AddressText.Unfocus();
+				});
+				*/
+
+				Entry _sender = s as Entry;
+				//_sender.BackgroundColor = Color.FromRgb(240, 240, 240);
+
+				var action = await DependencyService.Get<IPopupControl>().DisplayAddressAlert("Enter Address", "enter details");
+
+				if (action != null && !action.Equals("Cancel"))
+				{
+					//int _index = _sender._options.IndexOf(action);
+					_sender.Text = action;
+					//_sender.updateSelection();
+				}
+
+				AddressText.Unfocus();
+
+			};
+
 			_content.Children.Add(NameText);
 			_content.Children.Add(AddressText);
 			_content.Children.Add(AddressDetailText);
