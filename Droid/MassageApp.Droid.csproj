@@ -135,6 +135,7 @@
     <AndroidResource Include="Resources\drawable\swedish.png" />
     <AndroidResource Include="Resources\drawable\sports.png" />
     <AndroidResource Include="Resources\layout\AlertWithOptions.axml" />
+    <AndroidResource Include="Resources\layout\TitleAndSubtitleView.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.OS;
+using Android.Views;
 using Android.Widget;
 using MassageApp.Droid;
 using Xamarin.Forms;
@@ -67,17 +68,35 @@ namespace MassageApp.Droid
 				return fragment;
 			}
 
+			public void setTitleAndSubtitle()
+			{
+
+				TextView _title = ((TextView)this.Dialog.FindViewById(Resource.Id.alertTitle));
+				TextView _sbtitle = ((TextView)this.Dialog.FindViewById(Resource.Id.alertSubtitle));
+
+				_title.Text = _model.Title;
+				_sbtitle.Text = _model.message;
+
+			}
+
 			public override Dialog OnCreateDialog(Bundle savedInstanceState)
 			{
-				/*
+				
 				AlertDialog.Builder alert = new AlertDialog.Builder(Forms.Context);
 
-				alert.SetTitle(title);
+				alert.SetTitle(_model.Title);
 				//alert.SetMessage(subtitle);
 
-				alert.SetItems(items.ToArray(), (sender, e) =>
+				var inflater = Forms.Context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
+
+				Android.Views.View view = inflater.Inflate(Resource.Layout.TitleAndSubtitleView, null);
+
+				alert.SetCustomTitle(view);
+
+				alert.SetSingleChoiceItems(_model._options.ToArray(),this._model.selectedIndex, (sender, e) =>
 				{
-					_TaskCSource.SetResult(items[e.Which]);
+					this.Dismiss();
+					_TaskCSource.SetResult(_model._options[e.Which]);
 				});
 
 				alert.SetNegativeButton("Cancel", (sender, e) =>
@@ -86,8 +105,8 @@ namespace MassageApp.Droid
 				});
 
 				return alert.Create();
-				*/
-				return CreateOptionDialog();
+
+				//return CreateOptionDialog();
 			}
 
 			public Dialog CreateOptionDialog()
@@ -97,6 +116,8 @@ namespace MassageApp.Droid
 
 				dialog.SetTitle(this._model.Title);
 				dialog.SetContentView(Resource.Layout.AlertWithOptions);
+
+
 
 				TextView subtitle_text = (TextView)dialog.FindViewById(Resource.Id.subtitle);
 

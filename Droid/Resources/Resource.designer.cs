@@ -2444,6 +2444,9 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0b003d
 			public const int activity_chooser_view_content = 2131427389;
 			
+			// aapt resource value: 0x7f0b00b7
+			public const int alertSubtitle = 2131427511;
+			
 			// aapt resource value: 0x7f0b0049
 			public const int alertTitle = 2131427401;
 			
@@ -2897,8 +2900,8 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0b0048
 			public const int title_template = 2131427400;
 			
-			// aapt resource value: 0x7f0b00b7
-			public const int toolbar = 2131427511;
+			// aapt resource value: 0x7f0b00b8
+			public const int toolbar = 2131427512;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int top = 2131427356;
@@ -3213,7 +3216,10 @@ namespace MassageApp.Droid
 			public const int Tabbar = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int Toolbar = 2130903103;
+			public const int TitleAndSubtitleView = 2130903103;
+			
+			// aapt resource value: 0x7f030040
+			public const int Toolbar = 2130903104;
 			
 			static Layout()
 			{
