@@ -71,18 +71,18 @@ namespace MassageApp.iOS
 		}*/
 
 
-		public Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string> items)
+		public Task<string> DisplayAlertWithOptions(SelectableItemCell.SelectableItemCellModel _model)
 		{
 			var taskCompletionSource = new TaskCompletionSource<string>();
 
 			var alert = UIAlertController.Create(
-			  title,subtitle, UIAlertControllerStyle.ActionSheet);
+			  _model.Title,_model.message, UIAlertControllerStyle.ActionSheet);
 
 			/*alert.AddTextField(textField =>
 			{
 			});*/
 
-			foreach (string i in items)
+			foreach (string i in _model._options)
 			{
 				alert.AddAction(UIAlertAction.Create(
 			  					i, UIAlertActionStyle.Default,

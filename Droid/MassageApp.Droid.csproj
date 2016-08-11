@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
+    <AndroidSdkBuildToolsVersion>23.0.3</AndroidSdkBuildToolsVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{64C97336-2E53-4304-9016-3F6797BC75ED}</ProjectGuid>
@@ -133,6 +134,7 @@
     <AndroidResource Include="Resources\drawable\prenatal.png" />
     <AndroidResource Include="Resources\drawable\swedish.png" />
     <AndroidResource Include="Resources\drawable\sports.png" />
+    <AndroidResource Include="Resources\layout\AlertWithOptions.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

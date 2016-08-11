@@ -7,7 +7,7 @@ namespace MassageApp
 	public interface IPopupControl
 	{
 		//string selectedItem(string title, string subtitle, List<string>items);
-		Task<string> DisplayAlertWithOptions(string title, string subtitle, List<string>items);
+		Task<string> DisplayAlertWithOptions(SelectableItemCell.SelectableItemCellModel model);
 		Task<string> DisplayAddressAlert(string title, string message);
 
 	}

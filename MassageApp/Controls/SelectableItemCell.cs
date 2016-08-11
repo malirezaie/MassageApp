@@ -109,6 +109,18 @@ namespace MassageApp
 			_SubTitleView.Text = _options[selectedIndex];
 		}
 
+		public class SelectableItemCellModel
+		{
+			public string Title { get; set; }
+			// edit icon
+			public string message { get; set; }
+			public List<string> _options { get; set; }
+			public string OptionSelected { get; set; }
+			public int selectedIndex = 0;
+
+		}
+
+
 	}
 }
 

@@ -142,12 +142,13 @@ namespace MassageApp
 
 					//var action = await Application.Current.MainPage.DisplayActionSheet(j.Title, "Cancel", null, _sender._options.ToArray());
 
-					var action = await DependencyService.Get<IPopupControl>().DisplayAlertWithOptions(j.Title, j.message, j._options);
+					var action = await DependencyService.Get<IPopupControl>().DisplayAlertWithOptions(j);
 
 					if (action != null && !action.Equals("Cancel"))
 					{
 						int _index = _sender._options.IndexOf(action);
 						_sender.selectedIndex = _index;
+						j.selectedIndex = _index;
 						_sender.updateSelection();
 					}
 
@@ -165,15 +166,9 @@ namespace MassageApp
 		}
 
 
-		class MassageOptions
+		class MassageOptions : SelectableItemCell.SelectableItemCellModel
 		{
-			public string Title { get; set; }
-			// edit icon
-			public string message { get; set;}
-			public List<string> _options { get; set; }
-			public string OptionSelected { get; set; }
-			public int selectedIndex = 0;
-
+			
 		}
 
 		class MassageType
