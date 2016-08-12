@@ -71,18 +71,14 @@ namespace MassageApp.Droid
 			public void setTitleAndSubtitle()
 			{
 
-				TextView _title = ((TextView)this.Dialog.FindViewById(Resource.Id.alertTitle));
-				TextView _sbtitle = ((TextView)this.Dialog.FindViewById(Resource.Id.alertSubtitle));
 
-				_title.Text = _model.Title;
-				_sbtitle.Text = _model.message;
 
 			}
 
 			public override Dialog OnCreateDialog(Bundle savedInstanceState)
 			{
-				
-				AlertDialog.Builder alert = new AlertDialog.Builder(Forms.Context);
+
+				/*AlertDialog.Builder alert = new AlertDialog.Builder(Forms.Context,Resource.Style.AlertDialogCustom);
 
 				alert.SetTitle(_model.Title);
 				//alert.SetMessage(subtitle);
@@ -99,39 +95,57 @@ namespace MassageApp.Droid
 					_TaskCSource.SetResult(_model._options[e.Which]);
 				});
 
+
 				alert.SetNegativeButton("Cancel", (sender, e) =>
 				{
 					_TaskCSource.SetResult("Cancel");
 				});
 
-				return alert.Create();
 
-				//return CreateOptionDialog();
+				TextView _title = ((TextView)view.FindViewById(Resource.Id.alertTitle));
+				TextView _sbtitle = ((TextView)view.FindViewById(Resource.Id.alertSubtitle));
+
+				_title.Text = _model.Title;
+				_sbtitle.Text = _model.message;
+
+				return alert.Create(); 
+				*/
+				return CreateOptionDialog();
 			}
 
 			public Dialog CreateOptionDialog()
 			{
 
-				Dialog dialog = new Dialog(Forms.Context);
+				var inflater = Forms.Context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
+
+				Android.Views.View _v = inflater.Inflate(Resource.Layout.AlertWithOptions, null);
+
+				AlertDialog.Builder dialog = new AlertDialog.Builder(Forms.Context, Resource.Style.AlertDialogCustom);
 
 				dialog.SetTitle(this._model.Title);
-				dialog.SetContentView(Resource.Layout.AlertWithOptions);
 
+				dialog.SetNegativeButton("Cancel", (sender, e) =>
+				{
+					_TaskCSource.SetResult("Cancel");
+				});
 
+				dialog.SetView(_v);
 
-				TextView subtitle_text = (TextView)dialog.FindViewById(Resource.Id.subtitle);
+				TextView subtitle_text = (TextView)_v.FindViewById(Resource.Id.subtitle);
 
 				subtitle_text.Text = this._model.message;
 
-				RadioGroup rg = (RadioGroup)dialog.FindViewById(Resource.Id.radio_group);
+				RadioGroup rg = (RadioGroup)_v.FindViewById(Resource.Id.radio_group);
 
-				for (int i = 0; i < this._model._options.Count; i++) 
+				AlertDialog _dialog = dialog.Create();
+
+				for (int i = 0; i < this._model._options.Count; i++)
 				{
 					RadioButton rb = new RadioButton(Forms.Context);
 					rb.Text = this._model._options[i];
 					rb.Click += (sender, e) =>
 					{
-						dialog.Dismiss();
+						_dialog.Dismiss();
 						_TaskCSource.SetResult(((RadioButton)sender).Text);
 					};
 					rg.AddView(rb);
@@ -142,12 +156,8 @@ namespace MassageApp.Droid
 					}
 				}
 
-
-
-				return dialog;
+				return _dialog;
 			}
-
-
 
 			public override void OnCancel(IDialogInterface dialog)
 			{

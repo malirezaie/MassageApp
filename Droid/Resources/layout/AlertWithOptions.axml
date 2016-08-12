@@ -7,11 +7,15 @@
         android:id="@+id/subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="6dp"
+        android:paddingLeft="30dp"
         android:text="Hello!!!" />
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:paddingLeft="30dp" />
 </LinearLayout>

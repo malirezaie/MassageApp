@@ -3583,6 +3583,9 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0900bb
 			public const int AlertDialog_AppCompat_Light = 2131296443;
 			
+			// aapt resource value: 0x7f090178
+			public const int AlertDialogCustom = 2131296632;
+			
 			// aapt resource value: 0x7f0900bc
 			public const int Animation_AppCompat_Dialog = 2131296444;
 			
