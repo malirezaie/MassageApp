@@ -113,6 +113,7 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="packages.config" />
     <None Include="Controls\AndroidPopup %28copy%29.cs" />
+    <None Include="Resources\layout\TitleAndSubtitleView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Tabbar.axml" />
@@ -135,7 +136,6 @@
     <AndroidResource Include="Resources\drawable\swedish.png" />
     <AndroidResource Include="Resources\drawable\sports.png" />
     <AndroidResource Include="Resources\layout\AlertWithOptions.axml" />
-    <AndroidResource Include="Resources\layout\TitleAndSubtitleView.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

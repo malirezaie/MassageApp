@@ -118,24 +118,29 @@ namespace MassageApp.Droid
 
 				var inflater = Forms.Context.GetSystemService(Context.LayoutInflaterService) as LayoutInflater;
 
-				Android.Views.View _v = inflater.Inflate(Resource.Layout.AlertWithOptions, null);
+				Android.Views.View _Content = inflater.Inflate(Resource.Layout.AlertWithOptions, null);
+
+				//Android.Views.View _Title = inflater.Inflate(Resource.Layout.TitleAndSubtitleView, null);
 
 				AlertDialog.Builder dialog = new AlertDialog.Builder(Forms.Context, Resource.Style.AlertDialogCustom);
 
-				dialog.SetTitle(this._model.Title);
+				//dialog.SetTitle(this._model.Title);
+
+				//dialog.SetCustomTitle(_Title);
+				dialog.SetView(_Content);
 
 				dialog.SetNegativeButton("Cancel", (sender, e) =>
 				{
 					_TaskCSource.SetResult("Cancel");
 				});
 
-				dialog.SetView(_v);
+				TextView title_text = (TextView)_Content.FindViewById(Resource.Id.alertTitle);
+				TextView subtitle_text = (TextView)_Content.FindViewById(Resource.Id.alertSubtitle);
 
-				TextView subtitle_text = (TextView)_v.FindViewById(Resource.Id.subtitle);
-
+				title_text.Text = this._model.Title;
 				subtitle_text.Text = this._model.message;
 
-				RadioGroup rg = (RadioGroup)_v.FindViewById(Resource.Id.radio_group);
+				RadioGroup rg = (RadioGroup)_Content.FindViewById(Resource.Id.radio_group);
 
 				AlertDialog _dialog = dialog.Create();
 
@@ -155,6 +160,8 @@ namespace MassageApp.Droid
 						rb.Checked = true;
 					}
 				}
+
+				//_dialog.FindViewById
 
 				return _dialog;
 			}

@@ -4,18 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:id="@+id/subtitle"
+        android:id="@+id/alertTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:text="Hello!!!"
+        android:textStyle="bold"
+        android:textSize="16dp"
+        android:paddingTop="10dp"
+        android:textColor="@android:color/black" />
+    <TextView
+        android:id="@+id/alertSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:text="Hello!!!"
         android:paddingTop="6dp"
-        android:paddingLeft="30dp"
-        android:text="Hello!!!" />
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp" />
     <RadioGroup
         android:id="@+id/radio_group"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="center_vertical"
         android:orientation="vertical"
-        android:paddingLeft="30dp" />
+        android:paddingLeft="30dp"
+        android:paddingTop="6dp" />
 </LinearLayout>
