@@ -21,8 +21,23 @@ namespace MassageApp.Droid
 
 		public Task<string> DisplayAddressAlert(string title, string message)
 		{
-			return null;
-			//return DisplayAlertWithOptions(_model);
+			TaskCompletionSource<string> taskCompletionSource = new TaskCompletionSource<string>();
+			FragmentTransaction ft = ((Activity)Forms.Context).FragmentManager.BeginTransaction();
+
+			//Remove fragment else it will crash as it is already added to backstack
+			Fragment prev = ((Activity)Forms.Context).FragmentManager.FindFragmentByTag("dialog");
+			if (prev != null)
+			{
+				ft.Remove(prev);
+			}
+
+			ft.AddToBackStack(null);
+
+
+			//AlertDialogFragment _fragment = AlertDialogFragment.NewInstance(taskCompletionSource, _model);
+			//_fragment.Show(ft, "dialog");
+
+			return taskCompletionSource.Task;
 		}
 
 		public Task<string> DisplayAlertWithOptions(SelectableItemCell.SelectableItemCellModel _model)
