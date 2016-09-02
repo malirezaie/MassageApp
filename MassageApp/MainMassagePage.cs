@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Net.Http;
 using Xamarin.Forms;
+
 
 namespace MassageApp
 {
@@ -10,7 +12,7 @@ namespace MassageApp
 
 		public MainMassagePage ()
 		{
-
+			
 			Title = "MassageApp";
 
 			if (Device.OS == TargetPlatform.iOS)
@@ -50,10 +52,9 @@ namespace MassageApp
 				};
 			}
 
-
 			if (Device.OS == TargetPlatform.iOS)
 			{
-
+				
 				TableView tblview = new TableView
 				{
 					Root = new TableRoot

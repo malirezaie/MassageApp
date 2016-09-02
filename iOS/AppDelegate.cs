@@ -18,6 +18,8 @@ namespace MassageApp.iOS
 			manager.Configure("6968e46c0d2442958b5ac64966b40395");
 			manager.StartManager();
 
+			App.ScreenWidth = (double)UIScreen.MainScreen.Bounds.Width;
+			App.ScreenHeight = (double)UIScreen.MainScreen.Bounds.Height;
 
 			global::Xamarin.Forms.Forms.Init();
 

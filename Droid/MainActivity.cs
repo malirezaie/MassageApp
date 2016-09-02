@@ -20,10 +20,21 @@ namespace MassageApp.Droid
 
 			base.OnCreate(bundle);
 
-
 			CrashManager.Register(this, "cd0602d475ce4079bcf3761406a939ed");
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
+
+			var pixels = Resources.DisplayMetrics.WidthPixels;
+			var scale = Resources.DisplayMetrics.Density;
+
+			double dps = (double)((pixels - 0.5f) / scale);
+
+			App.ScreenWidth = dps;
+
+			pixels = Resources.DisplayMetrics.HeightPixels;
+			dps = (double)((pixels - 0.5f) / scale);
+
+			App.ScreenHeight = dps;
 
 			LoadApplication(new App());
 		}
