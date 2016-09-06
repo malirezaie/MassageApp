@@ -95,7 +95,12 @@
     <Folder Include="Controls\" />
     <Folder Include="Interfaces\" />
   </ItemGroup>
-  <Import Project="..\MassageApp.Models\MassageApp.Models.projitems" Label="Shared" Condition="Exists('..\MassageApp.Models\MassageApp.Models.projitems')" />
+  <ItemGroup>
+    <ProjectReference Include="..\MassageApp.Client.Model\MassageApp.Client.Model.csproj">
+      <Project>{47ECDD49-2CDF-4F45-ADD8-A8368B15B122}</Project>
+      <Name>MassageApp.Client.Model</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.0.107\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
 </Project>
