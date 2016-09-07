@@ -12,6 +12,13 @@ namespace MassageApp.Provider.Model
 		static string SPECIAL_REQUEST;
 		static string TAG;
 
+		enum SECTIONS
+		{
+			CANCELLED,
+			TODAY,
+			UPCOMING
+		}
+
 		public Address address;
 		public AppointmentRequest appointmentRequest;
 
@@ -31,7 +38,7 @@ namespace MassageApp.Provider.Model
 
 		}
 		public string massageType;
-		public string status;
+		public Massage.MassageStatus status;
 		public int ID;
 		public bool is_rebook_for_you;
 		public int length;
@@ -91,6 +98,29 @@ namespace MassageApp.Provider.Model
 			return "requestTime";
 		}
 
+		/* // DONT KNOW THIS ONE
+		public SECTIONS getSection()
+		{
+			
+
+		}
+		*/
+
+		public bool isCancelled()
+		{
+			if (status == Massage.MassageStatus.CANCELLED)
+				return true;
+			else
+				return false;		   
+		}
+
+		public bool isLive()
+		{
+			// return true if time is currently 
+			// 20 mins before OR start time OR 30 mins after  
+			// massage start time
+			return true;
+		}
 
 	}
 }
