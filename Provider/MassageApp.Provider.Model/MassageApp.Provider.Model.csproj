@@ -51,7 +51,6 @@
     <Compile Include="Response.cs" />
     <Compile Include="Review.cs" />
     <Compile Include="Settings.cs" />
-    <Compile Include="Soothe.cs" />
     <Compile Include="StartDateTime.cs" />
     <Compile Include="TherapistRegion.cs" />
   </ItemGroup>

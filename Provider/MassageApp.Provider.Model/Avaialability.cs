@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+
 namespace MassageApp.Provider.Model
 {
 	public class Availability

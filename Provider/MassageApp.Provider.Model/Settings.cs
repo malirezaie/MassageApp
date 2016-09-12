@@ -14,6 +14,7 @@ namespace MassageApp.Provider.Model
 		public int massageCount;
 		public int massagesUntilPayIncrease;
 		public int payLevel;
+
 		public bool prenatalMassage;
 		public bool deepTissueMassage;
 		public bool sportsMassage;

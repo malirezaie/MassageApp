@@ -27,7 +27,7 @@ namespace MassageApp.Provider.Model
 			CHAIR,
 			COUPLES,
 			DEEP,
-			PARTY,
+			CORPORATE,
 			PRENATAL,
 			SPORTS,
 			SWEDISH,

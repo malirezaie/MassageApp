@@ -13,7 +13,6 @@
 
 
 
-
 		public string lastName;
 		public string avatarURL;
 		public bool client;
