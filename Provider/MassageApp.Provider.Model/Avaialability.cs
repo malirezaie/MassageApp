@@ -18,7 +18,7 @@ namespace MassageApp.Provider.Model
 		public static int toDayOfWeek(string day)
 		{
 			//return either day to day of week integer... easy using DateTime
-			return 0;
+			return 1;
 		}
 
 
