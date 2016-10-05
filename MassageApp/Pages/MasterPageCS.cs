@@ -48,6 +48,19 @@ namespace MassageApp
 			};
 
 
+			Button logoutButton = new Button
+			{
+				Text="Logout",
+				HorizontalOptions = LayoutOptions.FillAndExpand
+			};
+
+			logoutButton.Clicked += async (sender, e) =>
+			{
+				await Navigation.PushModalAsync(new LoginPage());
+
+				var platform = DependencyService.Get<IPlatform>();
+				await platform.LogoutAsync();
+			};
 
 			Padding = new Thickness(0, 40, 0, 0);
 
@@ -61,9 +74,13 @@ namespace MassageApp
 			{
 				VerticalOptions = LayoutOptions.FillAndExpand,
 				Children = {
-				listView
+				listView,
+					logoutButton
 				}
 			};
+
+
+
 		}
 
 

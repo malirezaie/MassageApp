@@ -12,7 +12,7 @@ namespace MassageApp.Client.Model
 
 		//instance fields
 
-		private int ERROR_CODE;
+		//private int ERROR_CODE;
 
 		public string lastName; 
 		public bool client;
@@ -20,7 +20,7 @@ namespace MassageApp.Client.Model
 		public int credits;
 		public string email;
 		public string firstName;
-		public int Id;
+		public string Id;
 		public string inviteCode;
 		public string inviteURL;
 		public int minutes;
@@ -32,6 +32,30 @@ namespace MassageApp.Client.Model
 		public int subscriptionTier;
 		public string subscriptionTierName;
 		public bool therapist;
+
+
+		public User()
+		{
+			lastName = "";
+			client = false;
+			country = "CANADA";
+			credits = 0;
+			email = "";
+			firstName = "";
+			Id = "";
+			inviteCode = "";
+			inviteURL = "";
+			minutes = 0;
+			phoneNumber = "";
+
+			sessionToken = "";
+
+			subscribed = false;
+			subscriptionTier = 0;
+			subscriptionTierName = "";
+			therapist = false;
+
+		}
 
 		// METHODS
 		public User getCurrentUser()
