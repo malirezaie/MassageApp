@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MassageApp.Helpers;
 using Xamarin.Forms;
 
 namespace MassageApp
@@ -28,7 +29,7 @@ namespace MassageApp
 			});
 			masterPageItems.Add(new MasterPageItem
 			{
-				Title = "Reminders",
+				Title = $"Name: {Settings.Current.CurrentUser.firstName} {Settings.Current.CurrentUser.lastName}",
 				//IconSource = "reminders.png",
 				//TargetType = typeof(ReminderPageCS)
 			});
@@ -80,10 +81,12 @@ namespace MassageApp
 			};
 
 
-
 		}
 
-
+		protected override void OnAppearing()
+		{
+			base.OnAppearing();
+		}
 
 
 	}

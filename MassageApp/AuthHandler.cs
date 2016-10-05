@@ -70,16 +70,15 @@ namespace MassageApp
 			App.AuthenticatedUser = user;
 			System.Diagnostics.Debug.WriteLine("Authenticated with user: " + user.UserId);
 
-			Settings.Current.CurrentUser =
-				await App.MobileService.InvokeApiAsync<User>(
-				"User",
-				HttpMethod.Get,
-				null);
-
-			if (Settings.Current.CurrentUser != null)
+			if (string.IsNullOrEmpty(Settings.Current.CurrentUser.firstName))
 			{
+				Settings.Current.CurrentUser =
+					await App.MobileService.InvokeApiAsync<User>(
+					"User",
+					HttpMethod.Get,
+					null);
+				
 				Debug.WriteLine($"Set current userID to: {Settings.Current.CurrentUser.Id}");
-
 			}
 
 			AuthStore.CacheAuthToken(user);
