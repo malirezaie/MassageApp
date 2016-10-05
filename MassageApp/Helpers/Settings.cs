@@ -84,7 +84,12 @@ namespace MassageApp.Helpers
 	{
 		get {
 				string obj = AppSettings.GetValueOrDefault<string>(CurrentUserIdKey, "");
-				return obj == "null" ? new User() :  JsonConvert.DeserializeObject<User>(obj); 
+				if (obj == "null" || obj == "")
+				{
+					return new User();
+				}
+
+				return JsonConvert.DeserializeObject<User>(obj); 
 			}
 		set { 
 				AppSettings.AddOrUpdateValue<string>(CurrentUserIdKey, JsonConvert.SerializeObject(value)); 

@@ -6,19 +6,19 @@ using Xamarin.Forms;
 
 namespace MassageApp
 {
-	public partial class App : Application
+	public class App : Application
 	{
 		public static double ScreenWidth;
 		public static double ScreenHeight;
 		public const string AppName = "MassageApp";
 		public static MobileServiceClient MobileService;
 		public static MobileServiceUser AuthenticatedUser;
+		public MainMasterDetail mainMasterDetail;
 
 		public App()
 		{
-			InitializeComponent();
-
-			MainPage = new MainMasterDetail();
+			mainMasterDetail = new MainMasterDetail();
+			MainPage = mainMasterDetail;
 
 		}
 

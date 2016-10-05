@@ -17,8 +17,8 @@
     <!--Settings-->
     <Grid Grid.Row="1" VerticalOptions="Start" HorizontalOptions="CenterAndExpand">
       <StackLayout Orientation="Vertical" Padding="10">
-        <Button Text="  Login with Facebook  " Clicked="OnFBLoginClicked" Margin="5"/>
-        <Button Text="  Login with Google  " Clicked="OnGoogLoginClicked"/>
+        <Button TextColor="White" Text="Login with Facebook" Clicked="OnFBLoginClicked" Margin="10" BorderRadius="50" BackgroundColor= "#3b5998"/>
+        <Button TextColor="White" Text="Login with Google" Clicked="OnGoogLoginClicked" Margin="10" BorderRadius="50" BackgroundColor= "#d50f25"/>
         </StackLayout>
     </Grid>
   </Grid>

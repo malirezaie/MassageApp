@@ -40,6 +40,8 @@ namespace MassageApp.iOS
 			return user;
 		}
 
+		#region NOT_USED
+
 		public async Task<MobileServiceUser> LoginFacebookAsync()
 		{
 			tcs = new TaskCompletionSource<MobileServiceUser>();
@@ -78,6 +80,8 @@ namespace MassageApp.iOS
 				tcs.TrySetException(new Exception("Facebook login failed"));
 			}
 		}
+
+		#endregion
 
 		private MobileServiceUser GetCachedUser()
 		{

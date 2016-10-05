@@ -64,7 +64,7 @@ namespace MassageApp
 
 			var user =
 				authOption == Settings.AuthOption.Facebook ?
-					await LoginFacebookAsync(mobileClient) :
+                    await mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Facebook)://LoginFacebookAsync(mobileClient) :
 					await mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Google);
 
 			App.AuthenticatedUser = user;
@@ -84,13 +84,13 @@ namespace MassageApp
 			AuthStore.CacheAuthToken(user);
 		}
 
-		private static Task<MobileServiceUser> LoginFacebookAsync(IPlatform mobileClient)
-		{
-			// use server flow if the service URL has been customized
-			return //Settings.IsDefaultServiceUrl() ?
-				//mobileClient.LoginFacebookAsync();//:
-				mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
-		}
+		//private static Task<MobileServiceUser> LoginFacebookAsync(IPlatform mobileClient)
+		//{
+		//	// use server flow if the service URL has been customized
+		//	return //Settings.IsDefaultServiceUrl() ?
+		//		//mobileClient.LoginFacebookAsync();//:
+		//		mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Facebook);
+		//}
 
 		private async Task<HttpRequestMessage> CloneRequestAsync(HttpRequestMessage request)
 		{

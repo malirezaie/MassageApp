@@ -13,8 +13,13 @@ namespace MassageApp
 			masterPage = new MasterPageCS();
 			Master = masterPage;
 			Detail = new NavigationPage(new MainMassagePage());//new DetailPageCS());
-        
+        	
     	}
+
+		public void closeDrawer()
+		{
+			IsPresented = false;
+		}
 	}
 }
 
