@@ -18,9 +18,13 @@ namespace MassageApp.Droid
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
 
+			string STRIPE_KEY = "pk_test_eKfefVzad9wzTrbQiYPJBStR";
+
 			base.OnCreate(bundle);
 
 			CrashManager.Register(this, "cd0602d475ce4079bcf3761406a939ed");
+
+			Stripe.StripeClient.DefaultPublishableKey = STRIPE_KEY;
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 

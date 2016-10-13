@@ -13,118 +13,163 @@ namespace MassageApp.Helpers
   /// of your client applications. All settings are laid out the same exact way with getters
   /// and setters. 
   /// </summary>
-  public class Settings: INotifyPropertyChanged
-  {
-
-	static Settings settings;
-	public static Settings Current
+	public class Settings: INotifyPropertyChanged
 	{
-		get { return settings ?? (settings = new Settings()); }
-	}
 
-	public static bool IsFirstStart()
-	{
-		// TODO: this is for the CURRENT USERID
-		return Current.CurrentUser.firstName == "";
-	}
-
-    
-
-    #region Setting Constants
-
-    private const string SettingsKey = "settings_key";
-    private static readonly string SettingsDefault = string.Empty;
-	#endregion
-
-	#region INotifyPropertyChanged implementation
-
-	public event PropertyChangedEventHandler PropertyChanged;
-
-	public void OnPropertyChanged([CallerMemberName]string name = "")
-	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-	}
-
-	#endregion
-
-	public enum AuthOption
-	{
-		Facebook, Google
-	}
-	
-	public AuthOption AuthenticationType
-	{
-		get { return AppSettings.GetValueOrDefault<AuthOption>(AuthenticationTypeKey, DefaultAuthType); }
-
-		set
+		static Settings settings;
+		public static Settings Current
 		{
-			if (AppSettings.AddOrUpdateValue<AuthOption>(AuthenticationTypeKey, value))
+			get { return settings ?? (settings = new Settings()); }
+		}
+
+		public static bool IsFirstStart()
+		{
+			// TODO: this is for the CURRENT USERID
+			return Current.CurrentUser.firstName == "";
+		}
+
+	    
+
+	    #region Setting Constants
+
+	    private const string SettingsKey = "settings_key";
+	    private static readonly string SettingsDefault = string.Empty;
+		#endregion
+
+		#region INotifyPropertyChanged implementation
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		public void OnPropertyChanged([CallerMemberName]string name = "")
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+		}
+
+		#endregion
+
+		public enum AuthOption
+		{
+			Facebook, Google
+		}
+		
+		public AuthOption AuthenticationType
+		{
+			get { return AppSettings.GetValueOrDefault<AuthOption>(AuthenticationTypeKey, DefaultAuthType); }
+
+			set
 			{
-				OnPropertyChanged();
+				if (AppSettings.AddOrUpdateValue<AuthOption>(AuthenticationTypeKey, value))
+				{
+					OnPropertyChanged();
+				}
 			}
 		}
-	}
 
-	private const string AuthenticationTypeKey = nameof(AuthenticationTypeKey);
-	public const AuthOption DefaultAuthType = AuthOption.Facebook;
+		private const string AuthenticationTypeKey = nameof(AuthenticationTypeKey);
+		public const AuthOption DefaultAuthType = AuthOption.Facebook;
 
-	private const string DefaultUserIdKey = nameof(DefaultUserIdKey);
-	public const string UserIdDefault = "";
+		private const string DefaultUserIdKey = nameof(DefaultUserIdKey);
+		public const string UserIdDefault = "";
 
-	public string DefaultUserId
-	{
-		get { return AppSettings.GetValueOrDefault<string>(DefaultUserIdKey, UserIdDefault); }
-		set { AppSettings.AddOrUpdateValue<string>(DefaultUserIdKey, value); }
-	}
+		public string DefaultUserId
+		{
+			get { return AppSettings.GetValueOrDefault<string>(DefaultUserIdKey, UserIdDefault); }
+			set { AppSettings.AddOrUpdateValue<string>(DefaultUserIdKey, value); }
+		}
 
-	private const string CurrentUserIdKey = nameof(CurrentUserIdKey);
-	public const string DefaultCurrentUserId = "";
+		private const string CurrentUserIdKey = nameof(CurrentUserIdKey);
+		public const string DefaultCurrentUserId = "";
 
-	public User CurrentUser
-	{
-		get {
-				string obj = AppSettings.GetValueOrDefault<string>(CurrentUserIdKey, "");
+		public User CurrentUser
+		{
+			get {
+					string obj = AppSettings.GetValueOrDefault<string>(CurrentUserIdKey, "");
+					if (obj == "null" || obj == "")
+					{
+						return new User();
+					}
+
+					return JsonConvert.DeserializeObject<User>(obj); 
+				}
+			set { 
+					AppSettings.AddOrUpdateValue<string>(CurrentUserIdKey, JsonConvert.SerializeObject(value)); 
+				}
+		}
+
+		public const string MobileAppUrlKey = nameof(MobileAppUrlKey);
+		public const string DefaultMobileAppUrl = "https://appmassage.azurewebsites.net/";
+		public string MobileAppUrl
+		{
+			get { return AppSettings.GetValueOrDefault<string>(MobileAppUrlKey, DefaultMobileAppUrl); }
+
+			set { AppSettings.AddOrUpdateValue<string>(MobileAppUrlKey, value); }
+		}
+
+		#region CREDIT_CARD
+
+		public const string CurrentCardIDKey = nameof(CurrentCardIDKey);
+
+		public CreditCard CurrentCard
+		{
+			get
+			{
+				string obj = AppSettings.GetValueOrDefault<string>(CurrentCardIDKey, "");
 				if (obj == "null" || obj == "")
 				{
-					return new User();
+					return new CreditCard();
 				}
 
-				return JsonConvert.DeserializeObject<User>(obj); 
+				return JsonConvert.DeserializeObject<CreditCard>(obj);
 			}
-		set { 
-				AppSettings.AddOrUpdateValue<string>(CurrentUserIdKey, JsonConvert.SerializeObject(value)); 
+
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(CurrentCardIDKey, JsonConvert.SerializeObject(value));
 			}
-	}
+		}
 
-	public const string MobileAppUrlKey = nameof(MobileAppUrlKey);
-	public const string DefaultMobileAppUrl = "https://appmassage.azurewebsites.net/";
-	public string MobileAppUrl
-	{
-		get { return AppSettings.GetValueOrDefault<string>(MobileAppUrlKey, DefaultMobileAppUrl); }
+		public const string AdditionalardIDKey = nameof(AdditionalardIDKey);
 
-		set { AppSettings.AddOrUpdateValue<string>(MobileAppUrlKey, value); }
-	}
-
-	
-
-	public static string GeneralSettings
-    {
-      get
-      {
-        return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
-      }
-      set
-      {
-        AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
-      }
-    }
-
-	private static ISettings AppSettings
-	{
-		get
+		public CreditCard AdditionalCard
 		{
-			return CrossSettings.Current;
+			get
+			{
+				string obj = AppSettings.GetValueOrDefault<string>(AdditionalardIDKey, "");
+				if (obj == "null" || obj == "")
+				{
+					return new CreditCard();
+				}
+
+				return JsonConvert.DeserializeObject<CreditCard>(obj);
+			}
+
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(AdditionalardIDKey, JsonConvert.SerializeObject(value));
+			}
+		}
+
+		#endregion
+
+
+		public static string GeneralSettings
+	    {
+	      get
+	      {
+	        return AppSettings.GetValueOrDefault<string>(SettingsKey, SettingsDefault);
+	      }
+	      set
+	      {
+	        AppSettings.AddOrUpdateValue<string>(SettingsKey, value);
+	      }
+	    }
+
+		private static ISettings AppSettings
+		{
+			get
+			{
+				return CrossSettings.Current;
+			}
 		}
 	}
-  }
 }

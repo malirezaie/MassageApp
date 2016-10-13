@@ -13,10 +13,13 @@ namespace MassageApp.iOS
 	{
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
+			string STRIPE_KEY = "pk_test_eKfefVzad9wzTrbQiYPJBStR";
 
 			var manager = BITHockeyManager.SharedHockeyManager;
 			manager.Configure("6968e46c0d2442958b5ac64966b40395");
 			manager.StartManager();
+
+			Stripe.StripeClient.DefaultPublishableKey = STRIPE_KEY;
 
 			App.ScreenWidth = (double)UIScreen.MainScreen.Bounds.Width;
 			App.ScreenHeight = (double)UIScreen.MainScreen.Bounds.Height;

@@ -1,4 +1,6 @@
 ﻿using System;
+using MassageApp.Client.Model;
+using MassageApp.Helpers;
 using Xamarin.Forms;
 
 namespace MassageApp
@@ -25,18 +27,28 @@ namespace MassageApp
 			};
 
 			var tapGestureRecognizer = new TapGestureRecognizer();
-			tapGestureRecognizer.Tapped += async (s, e) =>
+			//tapGestureRecognizer.Tapped += async (s, e) =>
+			//{
+			//	Label _sender = s as Label;
+			//	_sender.Opacity = 0.8;
+			//	_sender.BackgroundColor = Color.FromRgb(25, 126, 207);
+
+			//	var action = await Application.Current.MainPage.DisplayAlert("Confirm", "Book Massage?", "Yes", "Cancel");
+
+			//	_sender.Opacity = 1.0;
+			//	_sender.BackgroundColor = Color.FromRgb(33, 150, 243);
+			//};
+
+			tapGestureRecognizer.Tapped += async (sender, e) =>
 			{
-				Label _sender = s as Label;
-				_sender.Opacity = 0.8;
-				_sender.BackgroundColor = Color.FromRgb(25, 126, 207);
-
-				var action = await Application.Current.MainPage.DisplayAlert("Confirm", "Book Massage?", "Yes", "Cancel");
-
-				_sender.Opacity = 1.0;
-				_sender.BackgroundColor = Color.FromRgb(33, 150, 243);
+				CreditCard card  = await DependencyService.Get<IStripe>().DisplayCardView();
+				if (card != null)
+				{
+					Settings.Current.CurrentCard = card;
+					var token = await DependencyService.Get<IStripe>().CreateToken();
+					int j = 10;
+				}
 			};
-
 
 			mainText.GestureRecognizers.Add(tapGestureRecognizer);
 

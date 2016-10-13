@@ -155,11 +155,18 @@
     <Reference Include="Facebook">
       <HintPath>..\packages\Xamarin.Facebook.iOS.4.13.1\lib\Xamarin.iOS10\Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="Stripe">
+      <HintPath>..\Components\stripe-1.0.7\lib\ios-unified\Stripe.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassageApp\MassageApp.csproj">
       <Project>{81AA28CF-CE16-43E5-9CCB-84CBF112F330}</Project>
       <Name>MassageApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MassageApp.Client.Model\MassageApp.Client.Model.csproj">
+      <Project>{47ECDD49-2CDF-4F45-ADD8-A8368B15B122}</Project>
+      <Name>MassageApp.Client.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -187,6 +194,7 @@
     <Compile Include="Controls\iOSPopup.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="iOSPlatform.cs" />
+    <Compile Include="Controls\StripeiOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\schedule.png" />
@@ -206,6 +214,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="hockeyappios">
       <Version>4.1.0.1</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="stripe">
+      <Version>1.0.7</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

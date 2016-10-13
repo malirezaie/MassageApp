@@ -136,6 +136,9 @@
       <HintPath>..\packages\Xamarin.Auth.1.3.1.1\lib\MonoAndroid10\Xamarin.Auth.dll</HintPath>
     </Reference>
     <Reference Include="System.Json" />
+    <Reference Include="Stripe">
+      <HintPath>..\Components\stripe-1.0.7\lib\android\Stripe.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassageApp\MassageApp.csproj">
@@ -152,6 +155,7 @@
     <Compile Include="Controls\AndroidPopup.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="AndroidPlatform.cs" />
+    <Compile Include="Controls\StripeDroid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -182,6 +186,7 @@
     <AndroidResource Include="Resources\drawable\swedish.png" />
     <AndroidResource Include="Resources\drawable\sports.png" />
     <AndroidResource Include="Resources\layout\AlertWithOptions.axml" />
+    <AndroidResource Include="Resources\layout\StripeView.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />
@@ -190,6 +195,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="hockeyappandroid">
       <Version>4.1.0.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="stripe">
+      <Version>1.0.7</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
