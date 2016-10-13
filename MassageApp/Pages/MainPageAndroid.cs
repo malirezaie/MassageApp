@@ -21,7 +21,7 @@ namespace MassageApp
 			);
 
 			this.Children.Add(
-				new BookButton()
+				new ReviewButton()
 			);
 
 		}

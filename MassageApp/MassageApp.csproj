@@ -44,7 +44,7 @@
     <Compile Include="Controls\CardView.cs" />
     <Compile Include="CustomTableView.cs" />
     <Compile Include="Controls\SelectableItemCell.cs" />
-    <Compile Include="Controls\CustomButton.cs" />
+    <Compile Include="Controls\ReviewButton.cs" />
     <Compile Include="Interfaces\IPopupControl.cs" />
     <Compile Include="Controls\AppSection.cs" />
     <Compile Include="Controls\BookButton.cs" />

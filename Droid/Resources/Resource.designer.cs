@@ -3304,8 +3304,8 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0b002b
 			public const int showTitle = 2131427371;
 			
-			// aapt resource value: 0x7f0b00bd
-			public const int sliding_tabs = 2131427517;
+			// aapt resource value: 0x7f0b00be
+			public const int sliding_tabs = 2131427518;
 			
 			// aapt resource value: 0x7f0b006e
 			public const int snackbar_action = 2131427438;
@@ -3337,26 +3337,29 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0b00ab
 			public const int status_bar_latest_event_content = 2131427499;
 			
+			// aapt resource value: 0x7f0b00bd
+			public const int stripeCvc = 2131427517;
+			
 			// aapt resource value: 0x7f0b00bc
-			public const int stripeCvc = 2131427516;
-			
-			// aapt resource value: 0x7f0b00bb
-			public const int stripeExpiration = 2131427515;
-			
-			// aapt resource value: 0x7f0b00b6
-			public const int stripeImage = 2131427510;
-			
-			// aapt resource value: 0x7f0b00ba
-			public const int stripeLastFour = 2131427514;
+			public const int stripeExpiration = 2131427516;
 			
 			// aapt resource value: 0x7f0b00b7
-			public const int stripeLayoutOne = 2131427511;
+			public const int stripeImage = 2131427511;
 			
-			// aapt resource value: 0x7f0b00b9
-			public const int stripeLayoutTwo = 2131427513;
+			// aapt resource value: 0x7f0b00bb
+			public const int stripeLastFour = 2131427515;
 			
 			// aapt resource value: 0x7f0b00b8
-			public const int stripeNumber = 2131427512;
+			public const int stripeLayoutOne = 2131427512;
+			
+			// aapt resource value: 0x7f0b00ba
+			public const int stripeLayoutTwo = 2131427514;
+			
+			// aapt resource value: 0x7f0b00b9
+			public const int stripeNumber = 2131427513;
+			
+			// aapt resource value: 0x7f0b00b6
+			public const int stripeView = 2131427510;
 			
 			// aapt resource value: 0x7f0b0065
 			public const int submit_area = 2131427429;
@@ -3385,8 +3388,8 @@ namespace MassageApp.Droid
 			// aapt resource value: 0x7f0b0048
 			public const int title_template = 2131427400;
 			
-			// aapt resource value: 0x7f0b00be
-			public const int toolbar = 2131427518;
+			// aapt resource value: 0x7f0b00bf
+			public const int toolbar = 2131427519;
 			
 			// aapt resource value: 0x7f0b001c
 			public const int top = 2131427356;

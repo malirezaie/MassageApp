@@ -25,13 +25,13 @@ namespace MassageApp
 
 			_content.Children.Add(_tempText);
 
-			if (Device.OS == TargetPlatform.iOS)
-			{
-				_content.Children.Add(new BookButton
-				{
-					Margin = new Thickness(-30, 0, -30, -10)
-				});
-			}
+			//if (Device.OS == TargetPlatform.iOS)
+			//{
+			//	_content.Children.Add(new BookButton
+			//	{
+			//		Margin = new Thickness(-30, 0, -30, -10)
+			//	});
+			//}
 
 			this.Content = _content;
 

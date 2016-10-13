@@ -145,6 +145,10 @@
       <Project>{81AA28CF-CE16-43E5-9CCB-84CBF112F330}</Project>
       <Name>MassageApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MassageApp.Client.Model\MassageApp.Client.Model.csproj">
+      <Project>{47ECDD49-2CDF-4F45-ADD8-A8368B15B122}</Project>
+      <Name>MassageApp.Client.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />

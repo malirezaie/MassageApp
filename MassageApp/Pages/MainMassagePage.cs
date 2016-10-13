@@ -43,6 +43,13 @@ namespace MassageApp
 				}
 			};
 
+			var bookbutton = new TableSection
+			{
+				new ViewCell(){
+					View = new ReviewButton(), Height = 80//Margin = new Thickness(-30, 0, -30, -10)
+				}
+			};
+
 
 			if (Device.OS == TargetPlatform.Android)
 			{
@@ -59,7 +66,7 @@ namespace MassageApp
 				{
 					Root = new TableRoot
 					{
-						section1,section2,section3
+						section1,section2,section3, bookbutton
 
 					},
 					Intent = TableIntent.Settings,
