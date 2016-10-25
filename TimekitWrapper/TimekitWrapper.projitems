@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{F5E7D073-173D-457C-9262-393E2B4EB966}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>TimekitWrapper</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Filter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)User.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpecificTimeFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpecificDayFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SpecDayAndTimeFilter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeKitClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Calendar.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)FilterCollection.cs" />
+  </ItemGroup>
+</Project>

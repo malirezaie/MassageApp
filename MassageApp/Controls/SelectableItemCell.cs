@@ -44,10 +44,7 @@ namespace MassageApp
 				Source = ImageSource.FromFile("ic_edit")
 			};
 
-			CustomButton _button = new CustomButton
-			{
-				Text = "Click Me!"
-			};
+
 
 
 			Children.Add(

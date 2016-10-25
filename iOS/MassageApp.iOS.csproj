@@ -30,6 +30,7 @@
     <MtouchHttpClientHandler>HttpClientHandler</MtouchHttpClientHandler>
     <MtouchTlsProvider>Default</MtouchTlsProvider>
     <PlatformTarget>x86</PlatformTarget>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <Optimize>true</Optimize>
@@ -106,9 +107,6 @@
     <Reference Include="Xamarin.Forms.CarouselView">
       <HintPath>..\packages\Xamarin.Forms.CarouselView.2.3.0-pre2\lib\Xamarin.iOS10\Xamarin.Forms.CarouselView.dll</HintPath>
     </Reference>
-    <Reference Include="HockeySDK">
-      <HintPath>..\Components\hockeyappios-4.1.0.1\lib\ios-unified\HockeySDK.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -158,6 +156,12 @@
     <Reference Include="Stripe">
       <HintPath>..\Components\stripe-1.0.7\lib\ios-unified\Stripe.dll</HintPath>
     </Reference>
+    <Reference Include="HockeySDK">
+      <HintPath>..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.dll</HintPath>
+    </Reference>
+    <Reference Include="HockeySDK.iOSBindings">
+      <HintPath>..\packages\HockeySDK.Xamarin.4.1.0\lib\Xamarin.iOS10\HockeySDK.iOSBindings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MassageApp\MassageApp.csproj">
@@ -177,6 +181,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
     <Folder Include="Controls\" />
+    <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -185,16 +190,17 @@
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
     <None Include="packages.config" />
+    <None Include="Renderers\CustomButtonRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Renderers\CustomTableViewRenderer.cs" />
-    <Compile Include="Renderers\CustomButtonRenderer.cs" />
     <Compile Include="Controls\iOSPopup.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="iOSPlatform.cs" />
     <Compile Include="Controls\StripeiOS.cs" />
+    <Compile Include="Services\HockeyappService_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\schedule.png" />
@@ -212,10 +218,6 @@
     <BundleResource Include="Resources\sports.png" />
   </ItemGroup>
   <ItemGroup>
-    <XamarinComponentReference Include="hockeyappios">
-      <Version>4.1.0.1</Version>
-      <Visible>False</Visible>
-    </XamarinComponentReference>
     <XamarinComponentReference Include="stripe">
       <Version>1.0.7</Version>
       <Visible>False</Visible>

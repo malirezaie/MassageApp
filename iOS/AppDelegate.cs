@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
-using HockeyApp;
+using HockeyApp.iOS;
 using UIKit;
 
 namespace MassageApp.iOS
@@ -14,6 +14,10 @@ namespace MassageApp.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			string STRIPE_KEY = "pk_test_eKfefVzad9wzTrbQiYPJBStR";
+
+			string hockeyAppID = "6968e46c0d2442958b5ac64966b40395";
+
+			InitializeHockeyApp(hockeyAppID);
 
 			var manager = BITHockeyManager.SharedHockeyManager;
 			manager.Configure("6968e46c0d2442958b5ac64966b40395");
@@ -39,6 +43,16 @@ namespace MassageApp.iOS
 		{
 			// We need to handle URLs by passing them to their own OpenUrl in order to make the SSO authentication works.
 			return Facebook.CoreKit.ApplicationDelegate.SharedInstance.OpenUrl(application, url, sourceApplication, annotation);
+		}
+
+		void InitializeHockeyApp(string iOSHockeyAppID)
+		{
+			var manager = BITHockeyManager.SharedHockeyManager;
+			manager.Configure(iOSHockeyAppID);
+			manager.LogLevel = BITLogLevel.Debug;
+			manager.StartManager();
+			manager.Authenticator.AuthenticateInstallation();
+			manager.UpdateManager.CheckForUpdate();
 		}
 
 	}

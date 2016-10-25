@@ -152,6 +152,51 @@ namespace MassageApp.Helpers
 		#endregion
 
 
+		#region TIMEKIT
+		public const string TimeKitUserKey = nameof(TimeKitUserKey);
+
+		public TimekitWrapper.User TimeKitUser
+		{
+			get
+			{
+				string obj = AppSettings.GetValueOrDefault<string>(TimeKitUserKey, "");
+				if (obj == "null" || obj == "")
+				{
+					return new TimekitWrapper.User();
+				}
+
+				return JsonConvert.DeserializeObject<TimekitWrapper.User>(obj);
+			}
+
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(TimeKitUserKey, JsonConvert.SerializeObject(value));
+			}
+		}
+
+		public const string TimeKitCalendarKey = nameof(TimeKitCalendarKey);
+
+		public TimekitWrapper.Calendar TimeKitCalendar
+		{
+			get
+			{
+				string obj = AppSettings.GetValueOrDefault<string>(TimeKitCalendarKey, "");
+				if (obj == "null" || obj == "")
+				{
+					return new TimekitWrapper.Calendar("","Main Calendar");
+				}
+
+				return JsonConvert.DeserializeObject<TimekitWrapper.Calendar>(obj);
+			}
+
+			set
+			{
+				AppSettings.AddOrUpdateValue<string>(TimeKitCalendarKey, JsonConvert.SerializeObject(value));
+			}
+		}
+		 
+		#endregion
+
 		public static string GeneralSettings
 	    {
 	      get

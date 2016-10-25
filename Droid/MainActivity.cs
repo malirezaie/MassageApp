@@ -1,5 +1,6 @@
 ﻿using System;
 using HockeyApp.Android;
+using HockeyApp.Android.Metrics;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
@@ -8,6 +9,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+[assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "cd0602d475ce4079bcf3761406a939ed")]
 namespace MassageApp.Droid
 {
 	[Activity(Label = "MassageApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -18,12 +20,12 @@ namespace MassageApp.Droid
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
 
-			string STRIPE_KEY = "pk_test_eKfefVzad9wzTrbQiYPJBStR";
-
 			base.OnCreate(bundle);
 
-			CrashManager.Register(this, "cd0602d475ce4079bcf3761406a939ed");
+			string STRIPE_KEY = "pk_test_eKfefVzad9wzTrbQiYPJBStR";
+			string hockeyappIDAndroid = "cd0602d475ce4079bcf3761406a939ed";
 
+			InitializeHockeyApp(hockeyappIDAndroid);
 			Stripe.StripeClient.DefaultPublishableKey = STRIPE_KEY;
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
@@ -41,6 +43,26 @@ namespace MassageApp.Droid
 			App.ScreenHeight = dps;
 
 			LoadApplication(new App());
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			Tracking.StartUsage(this);
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			Tracking.StopUsage(this);
+		}
+
+		void InitializeHockeyApp(string hockeyAppID)
+		{
+			CrashManager.Register(this, hockeyAppID);
+			UpdateManager.Register(this, hockeyAppID, true);
+			FeedbackManager.Register(this, hockeyAppID, null);
+			MetricsManager.Register(Application);
 		}
 	}
 }
