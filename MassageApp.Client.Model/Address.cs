@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace MassageApp.Client.Model
 {
@@ -7,11 +8,24 @@ namespace MassageApp.Client.Model
 
 		//static fields
 
-		public static string ADDRESS_AUTH_KEY = "AddressAuthKey";
-		public static string ADDRESS_CITY_ID_KEY = "AddressCityIDKey";
-		public static string ADDRESS_NAME_LABEL = "AddressNameLabel";
+		//public static string ADDRESS_AUTH_KEY = "AddressAuthKey";
+		//public static string ADDRESS_CITY_ID_KEY = "AddressCityIDKey";
+		//public static string ADDRESS_NAME_LABEL = "AddressNameLabel";
 
 		//instance fields
+
+		public Address()
+		{
+			aptNumber = "";
+			city = "";
+			cityId = 0;
+			instructions = "";
+			province = "";
+			street = "";
+			postalCode = "";
+
+		}
+
 
 		public string aptNumber;
 		public string city;
@@ -25,43 +39,43 @@ namespace MassageApp.Client.Model
 
 		//JSON IGNORE
 
-		public static bool doesHaveSubscriptionForAddress()
-		{
-			//check for subscription @address 
+		//public static bool doesHaveSubscriptionForAddress()
+		//{
+		//	//check for subscription @address 
 
-			return false;
-		}
+		//	return false;
+		//}
 
-		//JSON IGNORE
-		public string getDefaultAddressCity()
-		{
-			// get defaultAddressCity from shared preferences/ keychain using AddressCityIDKey
-			return "city";
-		}
+		////JSON IGNORE
+		//public string getDefaultAddressCity()
+		//{
+		//	// get defaultAddressCity from shared preferences/ keychain using AddressCityIDKey
+		//	return "city";
+		//}
 
-		//JSON IGNORE
-		public int getDefaultAddressId()
-		{
-			// get defaultAddressID from shared preferences/ keychain using AddressAuthKey
-			return 1;
+		////JSON IGNORE
+		//public int getDefaultAddressId()
+		//{
+		//	// get defaultAddressID from shared preferences/ keychain using AddressAuthKey
+		//	return 1;
 
-		}
+		//}
 
-		//JSON IGNORE
-		public string getDefaultAddressNameLabel()
-		{
-			// get defaultAddressNameLabel from shared preferences/ keychain using AddressNameLabel
-			return "addressnamelabel";
 
-		}
+		//public string getDefaultAddressNameLabel()
+		//{
+		//	// get defaultAddressNameLabel from shared preferences/ keychain using AddressNameLabel
+		//	return "addressnamelabel";
 
-		//JSON IGNORE
-		public bool hasDefaultAddress()
-		{
-			// check for address from shared preferences/ keychain using AddressAuthKey
-			return false;
+		//}
 
-		}
+
+		//public bool hasDefaultAddress()
+		//{
+		//	// check for address from shared preferences/ keychain using AddressAuthKey
+		//	return false;
+
+		//}
 
 	}
 }

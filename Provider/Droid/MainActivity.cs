@@ -22,6 +22,21 @@ namespace MassageApp.Provider.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
+			#region width/height
+			var pixels = Resources.DisplayMetrics.WidthPixels;
+			var scale = Resources.DisplayMetrics.Density;
+
+			double dps = (double)((pixels - 0.5f) / scale);
+
+			App.ScreenWidth = dps;
+
+			pixels = Resources.DisplayMetrics.HeightPixels;
+			dps = (double)((pixels - 0.5f) / scale);
+
+			App.ScreenHeight = dps;
+			#endregion
+
+
 			LoadApplication(new App());
 		}
 	}

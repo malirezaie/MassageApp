@@ -14,7 +14,5 @@
 		public int rated;
 		public double rating;
 
-
-
 	}
 }

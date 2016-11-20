@@ -60,7 +60,7 @@ namespace MassageApp
 				{
 					Settings.Current.CurrentCard = card;
 					var token = await DependencyService.Get<IStripe>().CreateToken();
-					int j = 10;
+					Settings.Current.StripeApiKey = token;
 				}
 			};
 

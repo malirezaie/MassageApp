@@ -4,6 +4,6 @@
 	{
 		public string amount;
 		public string title;
-
+		public string stripeKey;
 	}
 }

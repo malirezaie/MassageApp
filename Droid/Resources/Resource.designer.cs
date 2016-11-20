@@ -29,24 +29,6 @@ namespace MassageApp.Droid
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::MassageApp.Droid.Resource.Attribute.actionBarSize;
 			global::PCLCrypto.Resource.String.ApplicationName = global::MassageApp.Droid.Resource.String.ApplicationName;
 			global::PCLCrypto.Resource.String.Hello = global::MassageApp.Droid.Resource.String.Hello;
-			global::Stripe.Resource.Drawable.amex = global::MassageApp.Droid.Resource.Drawable.amex;
-			global::Stripe.Resource.Drawable.credit = global::MassageApp.Droid.Resource.Drawable.credit;
-			global::Stripe.Resource.Drawable.cvc = global::MassageApp.Droid.Resource.Drawable.cvc;
-			global::Stripe.Resource.Drawable.diners = global::MassageApp.Droid.Resource.Drawable.diners;
-			global::Stripe.Resource.Drawable.discover = global::MassageApp.Droid.Resource.Drawable.discover;
-			global::Stripe.Resource.Drawable.jcb = global::MassageApp.Droid.Resource.Drawable.jcb;
-			global::Stripe.Resource.Drawable.maestro = global::MassageApp.Droid.Resource.Drawable.maestro;
-			global::Stripe.Resource.Drawable.mastercard = global::MassageApp.Droid.Resource.Drawable.mastercard;
-			global::Stripe.Resource.Drawable.visa = global::MassageApp.Droid.Resource.Drawable.visa;
-			global::Stripe.Resource.Id.stripeCvc = global::MassageApp.Droid.Resource.Id.stripeCvc;
-			global::Stripe.Resource.Id.stripeExpiration = global::MassageApp.Droid.Resource.Id.stripeExpiration;
-			global::Stripe.Resource.Id.stripeImage = global::MassageApp.Droid.Resource.Id.stripeImage;
-			global::Stripe.Resource.Id.stripeLastFour = global::MassageApp.Droid.Resource.Id.stripeLastFour;
-			global::Stripe.Resource.Id.stripeLayoutOne = global::MassageApp.Droid.Resource.Id.stripeLayoutOne;
-			global::Stripe.Resource.Id.stripeLayoutTwo = global::MassageApp.Droid.Resource.Id.stripeLayoutTwo;
-			global::Stripe.Resource.Id.stripeNumber = global::MassageApp.Droid.Resource.Id.stripeNumber;
-			global::Stripe.Resource.Layout.stripeviewlayout = global::MassageApp.Droid.Resource.Layout.stripeviewlayout;
-			global::Stripe.Resource.String.library_name = global::MassageApp.Droid.Resource.String.library_name;
 			global::HockeyApp.Resource.Color.hockeyapp_background_header = global::MassageApp.Droid.Resource.Color.hockeyapp_background_header;
 			global::HockeyApp.Resource.Color.hockeyapp_background_light = global::MassageApp.Droid.Resource.Color.hockeyapp_background_light;
 			global::HockeyApp.Resource.Color.hockeyapp_background_white = global::MassageApp.Droid.Resource.Color.hockeyapp_background_white;
@@ -167,6 +149,25 @@ namespace MassageApp.Droid
 			global::HockeyApp.Resource.Style.HockeyApp_ButtonStyle = global::MassageApp.Droid.Resource.Style.HockeyApp_ButtonStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_EditTextStyle = global::MassageApp.Droid.Resource.Style.HockeyApp_EditTextStyle;
 			global::HockeyApp.Resource.Style.HockeyApp_SingleLineInputStyle = global::MassageApp.Droid.Resource.Style.HockeyApp_SingleLineInputStyle;
+			global::Stripe.Resource.Drawable.amex = global::MassageApp.Droid.Resource.Drawable.amex;
+			global::Stripe.Resource.Drawable.credit = global::MassageApp.Droid.Resource.Drawable.credit;
+			global::Stripe.Resource.Drawable.cvc = global::MassageApp.Droid.Resource.Drawable.cvc;
+			global::Stripe.Resource.Drawable.diners = global::MassageApp.Droid.Resource.Drawable.diners;
+			global::Stripe.Resource.Drawable.discover = global::MassageApp.Droid.Resource.Drawable.discover;
+			global::Stripe.Resource.Drawable.jcb = global::MassageApp.Droid.Resource.Drawable.jcb;
+			global::Stripe.Resource.Drawable.maestro = global::MassageApp.Droid.Resource.Drawable.maestro;
+			global::Stripe.Resource.Drawable.mastercard = global::MassageApp.Droid.Resource.Drawable.mastercard;
+			global::Stripe.Resource.Drawable.visa = global::MassageApp.Droid.Resource.Drawable.visa;
+			global::Stripe.Resource.Id.stripeCvc = global::MassageApp.Droid.Resource.Id.stripeCvc;
+			global::Stripe.Resource.Id.stripeExpiration = global::MassageApp.Droid.Resource.Id.stripeExpiration;
+			global::Stripe.Resource.Id.stripeImage = global::MassageApp.Droid.Resource.Id.stripeImage;
+			global::Stripe.Resource.Id.stripeLastFour = global::MassageApp.Droid.Resource.Id.stripeLastFour;
+			global::Stripe.Resource.Id.stripeLayoutOne = global::MassageApp.Droid.Resource.Id.stripeLayoutOne;
+			global::Stripe.Resource.Id.stripeLayoutTwo = global::MassageApp.Droid.Resource.Id.stripeLayoutTwo;
+			global::Stripe.Resource.Id.stripeNumber = global::MassageApp.Droid.Resource.Id.stripeNumber;
+			global::Stripe.Resource.Layout.stripeviewlayout = global::MassageApp.Droid.Resource.Layout.stripeviewlayout;
+			global::Stripe.Resource.String.library_name = global::MassageApp.Droid.Resource.String.library_name;
+			global::ModernHttpClient.Resource.String.library_name = global::MassageApp.Droid.Resource.String.library_name;
 		}
 		
 		public partial class Animation

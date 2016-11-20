@@ -28,7 +28,18 @@ namespace MassageApp.Helpers
 			return Current.CurrentUser.firstName == "";
 		}
 
+		#region MOBILEAPPURL
+
+		public const string MobileAppUrlKey = nameof(MobileAppUrlKey);
+		public const string DefaultMobileAppUrl = "https://appmassage.azurewebsites.net/";
+		public string MobileAppUrl
+		{
+			get { return AppSettings.GetValueOrDefault<string>(MobileAppUrlKey, DefaultMobileAppUrl); }
+
+			set { AppSettings.AddOrUpdateValue<string>(MobileAppUrlKey, value); }
+		}
 	    
+		#endregion
 
 	    #region Setting Constants
 
@@ -46,6 +57,8 @@ namespace MassageApp.Helpers
 		}
 
 		#endregion
+
+		#region AUTH_STUFF
 
 		public enum AuthOption
 		{
@@ -68,13 +81,29 @@ namespace MassageApp.Helpers
 		private const string AuthenticationTypeKey = nameof(AuthenticationTypeKey);
 		public const AuthOption DefaultAuthType = AuthOption.Facebook;
 
-		private const string DefaultUserIdKey = nameof(DefaultUserIdKey);
-		public const string UserIdDefault = "";
+		#endregion
 
-		public string DefaultUserId
+
+		#region MassageAppUSER & Address
+
+		private const string DefaultAddressKey = nameof(DefaultAddressKey);
+		public const string DefaultAddress = "";
+
+		public Address CurrentAddress
 		{
-			get { return AppSettings.GetValueOrDefault<string>(DefaultUserIdKey, UserIdDefault); }
-			set { AppSettings.AddOrUpdateValue<string>(DefaultUserIdKey, value); }
+			get { 
+				
+				string obj = AppSettings.GetValueOrDefault<string>(DefaultAddressKey, DefaultAddress);
+				if (obj == "null" || obj == "")
+				{
+					return new Address();
+				}
+
+				return JsonConvert.DeserializeObject<Address>(obj);
+			}
+			set { 
+				AppSettings.AddOrUpdateValue<string>(DefaultAddressKey, JsonConvert.SerializeObject(value)); 
+			}
 		}
 
 		private const string CurrentUserIdKey = nameof(CurrentUserIdKey);
@@ -83,7 +112,7 @@ namespace MassageApp.Helpers
 		public User CurrentUser
 		{
 			get {
-					string obj = AppSettings.GetValueOrDefault<string>(CurrentUserIdKey, "");
+					string obj = AppSettings.GetValueOrDefault<string>(CurrentUserIdKey, DefaultCurrentUserId);
 					if (obj == "null" || obj == "")
 					{
 						return new User();
@@ -96,16 +125,10 @@ namespace MassageApp.Helpers
 				}
 		}
 
-		public const string MobileAppUrlKey = nameof(MobileAppUrlKey);
-		public const string DefaultMobileAppUrl = "https://appmassage.azurewebsites.net/";
-		public string MobileAppUrl
-		{
-			get { return AppSettings.GetValueOrDefault<string>(MobileAppUrlKey, DefaultMobileAppUrl); }
+		#endregion
 
-			set { AppSettings.AddOrUpdateValue<string>(MobileAppUrlKey, value); }
-		}
 
-		#region CREDIT_CARD
+		#region STRIPE
 
 		public const string CurrentCardIDKey = nameof(CurrentCardIDKey);
 
@@ -148,6 +171,16 @@ namespace MassageApp.Helpers
 				AppSettings.AddOrUpdateValue<string>(AdditionalardIDKey, JsonConvert.SerializeObject(value));
 			}
 		}
+
+		public const string StripeAPIKeyID = nameof(StripeAPIKeyID);
+
+		public string StripeApiKey
+		{
+			get { return AppSettings.GetValueOrDefault<string>(StripeAPIKeyID, ""); }
+
+			set { AppSettings.AddOrUpdateValue<string>(StripeAPIKeyID, value); }
+		}
+
 
 		#endregion
 

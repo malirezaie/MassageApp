@@ -15,11 +15,9 @@ namespace MassageApp.Client.Model
 
 		public bool backToBack;
 
-		public Billing billing;
-
 		public BillingLineItem billingLineItem;
 
-		public Client client;
+		public string clientID;
 
 		public string currency;
 
@@ -29,7 +27,7 @@ namespace MassageApp.Client.Model
 
 		public string displayTime;
 
-		public int Id;
+		public int ID;
 
 		public bool isRepeat;
 
@@ -51,6 +49,8 @@ namespace MassageApp.Client.Model
 
 		public string status;
 
+		public bool confirmed;
+
 		public string subtotalPrice;
 
 		public string Summary;
@@ -58,7 +58,6 @@ namespace MassageApp.Client.Model
 		public Therapist therapists;
 
 		public string type;
-
 
 
 		// methods

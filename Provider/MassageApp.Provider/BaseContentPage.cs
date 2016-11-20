@@ -12,6 +12,16 @@ namespace MassageApp.Provider
 			{
 				Navigation.PushModalAsync(new LoginPage());
 			}
+			else {
+
+				Content = new Entry
+				{
+
+					Text = App.Token
+
+				};
+
+			}
 		}
 	}
 }

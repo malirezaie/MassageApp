@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using ModernHttpClient;
 
 namespace TimekitWrapper
 {
@@ -23,7 +24,7 @@ namespace TimekitWrapper
 		//password is API KEY for the CURRENT USER
 		public TimeKitClient(string username, string password)
 		{
-			_client = new HttpClient();
+			_client = new HttpClient(new NativeMessageHandler());
 
 			_client.BaseAddress = new Uri("https://api.timekit.io/v2/");
 

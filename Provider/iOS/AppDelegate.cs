@@ -16,6 +16,9 @@ namespace MassageApp.Provider.iOS
 
 			LoadApplication(new App());
 
+			App.ScreenWidth = (double)UIScreen.MainScreen.Bounds.Width;
+			App.ScreenHeight = (double)UIScreen.MainScreen.Bounds.Height;
+
 			return base.FinishedLaunching(app, options);
 		}
 	}

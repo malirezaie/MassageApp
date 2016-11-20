@@ -1,52 +1,29 @@
 ﻿using System;
-using System.Drawing;
-using System.Globalization;
 using System.Threading.Tasks;
-using Android.Content;
 using MassageApp.Provider;
-
+using Xamarin.Forms;
+using System.Threading.Tasks;
+using MassageApp.Provider;
 using Xamarin.Auth;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
+using NSAction = System.Action;
+using Android.Content;
+using System.Globalization;
 
-
-[assembly: ExportRenderer(typeof(LoginPage), typeof(MassageApp.Provider.Droid.LoginPageRenderer))]
+[assembly: Xamarin.Forms.Dependency(typeof(MassageApp.Provider.Droid.DroidTimeKit))]
 namespace MassageApp.Provider.Droid
 {
-	public class LoginPageRenderer: PageRenderer
+	public class DroidTimeKit : IAuthService
 	{
+		public Uri StartUri = new Uri("https://api.timekit.io/v2/accounts/google/signup?Timekit-App=appmassage2&callback=https://appmassage.azurewebsites.net");
+		public Uri EndUri = new Uri("https://appmassage.azurewebsites.net");
 
-		public Uri StartUri = new Uri("https://api.timekit.io/v2/accounts/google/signup?Timekit-App=appmassage2");
-		public Uri EndUri = new Uri("http://appmassage.azurewebsites.net");
-
-
-		public LoginPageRenderer()
+		public async Task<string> LinkTimeKit()
 		{
-
+			return await LoginAsyncOverride(Xamarin.Forms.Forms.Context);
 
 		}
-
-		protected async override void OnElementChanged( ElementChangedEventArgs<Page> e)
-		{
-			base.OnElementChanged(e);
-
-			if (e.OldElement != null || Element == null)
-			{
-				return;
-			}
-
-			try
-			{
-				string res = await LoginAsyncOverride(Forms.Context);
-
-			}
-			catch (Exception e)
-			{
-
-			}
-
-		}
-
 
 		protected Task<string> LoginAsyncOverride(Context context)
 		{
@@ -54,7 +31,7 @@ namespace MassageApp.Provider.Droid
 
 			var auth = new WebRedirectAuthenticator(StartUri, EndUri);
 			//auth.ShowUIErrors = false;
-			auth.ClearCookiesBeforeLogin = false;
+			auth.ClearCookiesBeforeLogin = true;
 
 			Intent intent = auth.GetUI(context);
 
@@ -73,7 +50,7 @@ namespace MassageApp.Provider.Droid
 				if (!e.IsAuthenticated)
 					tcs.TrySetException(new InvalidOperationException("Authentication was cancelled by the user."));
 				else
-					tcs.TrySetResult(e.Account.Properties["token"]);
+					tcs.TrySetResult(e.Account.Properties["email"] + "~" + e.Account.Properties["token"]);
 			};
 
 			context.StartActivity(intent);
@@ -83,4 +60,5 @@ namespace MassageApp.Provider.Droid
 
 
 	}
+
 }
