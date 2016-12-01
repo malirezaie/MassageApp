@@ -12,7 +12,7 @@ namespace MassageApp
 	{
 		Task<MobileServiceUser> LoginAsync(MobileServiceAuthenticationProvider provider);
 
-		//Task<MobileServiceUser> LoginFacebookAsync();
+		Task<MobileServiceUser> LoginFacebookAsync();
 
 		AccountStore GetAccountStore();
 

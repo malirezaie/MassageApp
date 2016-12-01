@@ -40,8 +40,6 @@ namespace MassageApp.iOS
 			return user;
 		}
 
-		#region NOT_USED
-
 		public async Task<MobileServiceUser> LoginFacebookAsync()
 		{
 			tcs = new TaskCompletionSource<MobileServiceUser>();
@@ -56,7 +54,14 @@ namespace MassageApp.iOS
 			}
 			else {
 				Debug.WriteLine("Starting Facebook client flow");
-				loginManager.LogInWithReadPermissions(new[] { "public_profile" }, view, LoginTokenHandler);
+				try
+				{
+					loginManager.LogInWithReadPermissions(new[] { "public_profile", "email" }, view, LoginTokenHandler);
+				}
+				catch(Exception e)
+				{
+					Debug.WriteLine(e);
+				}
 			}
 
 			return await tcs.Task;
@@ -71,6 +76,20 @@ namespace MassageApp.iOS
 				var token = new JObject();
 				token["access_token"] = loginResult.Token.TokenString;
 
+				#region try get email
+				//var fbrequesturl = "https://graph.facebook.com/me?access_token=" + loginResult.Token.TokenString + "&fields=email,first_name,last_name";
+
+				//using (var client = new System.Net.Http.HttpClient())
+				//{
+				//	using (var resp = await client.GetAsync(fbrequesturl))
+				//	{
+				//		resp.EnsureSuccessStatusCode();
+				//		var res = await resp.Content.ReadAsStringAsync();
+
+				//	}
+				//}
+				#endregion
+
 				var user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
 				Debug.WriteLine($"Logged into MobileService, user: {user.UserId}");
 
@@ -81,7 +100,7 @@ namespace MassageApp.iOS
 			}
 		}
 
-		#endregion
+
 
 		private MobileServiceUser GetCachedUser()
 		{

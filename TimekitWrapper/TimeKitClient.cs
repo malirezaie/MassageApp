@@ -14,7 +14,7 @@ namespace TimekitWrapper
 	public class TimeKitClient
 	{
 		public static HttpClient _client;
-		public string timekitAppString = "appmassage";
+		public string timekitAppString = "appmassage2";
 
 		// USED TO CREATE CLIENT TO GET USER
 		public TimeKitClient()

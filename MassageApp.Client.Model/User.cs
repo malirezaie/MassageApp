@@ -32,7 +32,7 @@ namespace MassageApp.Client.Model
 		public int subscriptionTier;
 		public string subscriptionTierName;
 		public bool therapist;
-
+		public string imageURI;
 
 		public User()
 		{
@@ -47,7 +47,7 @@ namespace MassageApp.Client.Model
 			inviteURL = "";
 			minutes = 0;
 			phoneNumber = "";
-
+			imageURI = "";
 			sessionToken = "";
 
 			subscribed = false;

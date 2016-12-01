@@ -2,12 +2,15 @@
 using HockeyApp.Android;
 using HockeyApp.Android.Metrics;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using Android.Views;
+using Java.IO;
+using Xamarin.Facebook;
+using Xamarin.Facebook.AppEvents;
+using Xamarin.Facebook.Login;
+using Xamarin.Forms;
+using Android.Content;
 
 [assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "cd0602d475ce4079bcf3761406a939ed")]
 namespace MassageApp.Droid
@@ -15,10 +18,17 @@ namespace MassageApp.Droid
 	[Activity(Label = "MassageApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
+		public static MainActivity instance;
+		private ICallbackManager callbackManager;
+		private FacebookCallback facebookCallback = new FacebookCallback();
+
+
 		protected override void OnCreate(Bundle bundle)
 		{
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
+
+			instance = this;
 
 			base.OnCreate(bundle);
 
@@ -57,6 +67,11 @@ namespace MassageApp.Droid
 			Tracking.StopUsage(this);
 		}
 
+		public static MainActivity DefaultService
+		{
+			get { return instance; }
+		}
+
 		void InitializeHockeyApp(string hockeyAppID)
 		{
 			CrashManager.Register(this, hockeyAppID);
@@ -64,6 +79,34 @@ namespace MassageApp.Droid
 			FeedbackManager.Register(this, hockeyAppID, null);
 			MetricsManager.Register(Application);
 		}
+
+		internal void SetPlatformCallback(AndroidPlatform platform)
+		{
+			facebookCallback.platform = platform;
+		}
+
 	}
+
+	class FacebookCallback : Java.Lang.Object, IFacebookCallback
+	{
+		internal AndroidPlatform platform;
+
+		public void OnCancel()
+		{
+			platform.OnFacebookLoginCancel();
+		}
+
+		public void OnError(FacebookException e)
+		{
+			platform.OnFacebookLoginError(e);
+		}
+
+		public async void OnSuccess(Java.Lang.Object obj)
+		{
+			LoginResult loginResult = (LoginResult)obj;
+			await platform.OnFacebookLoginSuccess(loginResult.AccessToken.Token);
+		}
+	}
+
 }
 

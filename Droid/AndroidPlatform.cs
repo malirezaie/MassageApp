@@ -15,6 +15,9 @@ using System.Linq;
 using MassageApp.Helpers;
 using Xamarin.Forms;
 using Android.Webkit;
+using Xamarin.Facebook;
+using Xamarin.Facebook.Login;
+using Android.App;
 
 [assembly: Xamarin.Forms.Dependency(typeof(MassageApp.Droid.AndroidPlatform))]
 namespace MassageApp.Droid
@@ -39,44 +42,45 @@ namespace MassageApp.Droid
 			return user;
 		}
 
-		//public async Task<MobileServiceUser> LoginFacebookAsync()
-		//{
-		//	tcs = new TaskCompletionSource<MobileServiceUser>();
-		//	var loginManager = new LoginManager();
-		//	var view = GetTopViewController();
+		public Task<MobileServiceUser> LoginFacebookAsync()
+		{
+			tcs = new TaskCompletionSource<MobileServiceUser>();
 
-		//	var user = GetCachedUser();
+			var user = GetCachedUser();
 
-		//	if (user != null)
-		//	{
-		//		tcs.TrySetResult(user);
-		//	}
-		//	else {
-		//		Debug.WriteLine("Starting Facebook client flow");
-		//		loginManager.LogInWithReadPermissions(new[] { "public_profile" }, view, LoginTokenHandler);
-		//	}
+			if (user != null)
+			{
+				tcs.TrySetResult(user);
+			}
+			else {
+				MainActivity.DefaultService.SetPlatformCallback(this); // set context for facebook callbacks
+				LoginManager.Instance.LogInWithReadPermissions(MainActivity.instance, new[] { "public_profile","email" });
+			}
+			return tcs.Task;
+		}
 
-		//	return await tcs.Task;
-		//}
+		internal async Task OnFacebookLoginSuccess(string tokenString)
+		{
+			Debug.WriteLine($"Logged into Facebook, access_token: {tokenString}");
 
-		//private async void LoginTokenHandler(LoginManagerLoginResult loginResult, NSError error)
-		//{
-		//	if (loginResult.Token != null)
-		//	{
-		//		Debug.WriteLine($"Logged into Facebook, access_token: {loginResult.Token.TokenString}");
+			var token = new JObject();
+			token["access_token"] = tokenString;
 
-		//		var token = new JObject();
-		//		token["access_token"] = loginResult.Token.TokenString;
+			var user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
+			Debug.WriteLine($"Logged into MobileService, user: {user.UserId}");
 
-		//		var user = await App.MobileService.LoginAsync(MobileServiceAuthenticationProvider.Facebook, token);
-		//		Debug.WriteLine($"Logged into MobileService, user: {user.UserId}");
+			tcs.TrySetResult(user);
+		}
 
-		//		tcs.TrySetResult(user);
-		//	}
-		//	else {
-		//		tcs.TrySetException(new Exception("Facebook login failed"));
-		//	}
-		//}
+		internal void OnFacebookLoginError(FacebookException e)
+		{
+			tcs.TrySetException(e);
+		}
+
+		internal void OnFacebookLoginCancel()
+		{
+			tcs.TrySetException(new Exception("Facebook login cancelled"));
+		}
 
 		private MobileServiceUser GetCachedUser()
 		{

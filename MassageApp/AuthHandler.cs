@@ -64,7 +64,7 @@ namespace MassageApp
 
 			var user =
 				authOption == Settings.AuthOption.Facebook ?
-                    await mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Facebook)://LoginFacebookAsync(mobileClient) :
+                    await mobileClient.LoginFacebookAsync():
 					await mobileClient.LoginAsync(MobileServiceAuthenticationProvider.Google);
 
 			App.AuthenticatedUser = user;
