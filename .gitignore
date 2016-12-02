@@ -43,3 +43,5 @@ Thumbs.db
 Components
 *.ipa
 *.zip
+
+Droid/Resources/Resource.designer.cs
