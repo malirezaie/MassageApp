@@ -41,7 +41,7 @@ namespace MassageApp
 			//await InitLocalStoreAsync(LocalDbFilename);
 			//InitLocalTables();
 
-			IPlatform platform = DependencyService.Get<IPlatform>();
+			var platform = DependencyService.Get<ISocialLogin>();
 			//DataFilesPath = await platform.GetDataFilesPath();
 
 			if (showLoginDialog)

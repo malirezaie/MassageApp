@@ -56,7 +56,7 @@ namespace MassageApp.Helpers
 
 		private static AccountStore GetAccountStore()
 		{
-			return DependencyService.Get<IPlatform>().GetAccountStore();
+			return DependencyService.Get<ISocialLogin>().GetAccountStore();
 		}
 	}
 }

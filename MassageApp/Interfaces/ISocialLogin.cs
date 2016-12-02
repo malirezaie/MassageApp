@@ -8,7 +8,7 @@ using Xamarin.Auth;
 
 namespace MassageApp
 {
-	public interface IPlatform
+	public interface ISocialLogin
 	{
 		Task<MobileServiceUser> LoginAsync(MobileServiceAuthenticationProvider provider);
 

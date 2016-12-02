@@ -174,9 +174,9 @@
     <Compile Include="Renderers\CustomTableViewRenderer.cs" />
     <Compile Include="Controls\AndroidPopup.cs" />
     <Compile Include="Helpers\Settings.cs" />
-    <Compile Include="AndroidPlatform.cs" />
     <Compile Include="Controls\StripeDroid.cs" />
     <Compile Include="Services\HockeyappService_Android.cs" />
+    <Compile Include="Services\AndroidSocialLogin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

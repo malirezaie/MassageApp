@@ -16,14 +16,14 @@ using Xamarin.Auth;
 using System.Linq;
 using MassageApp.Helpers;
 
-[assembly: Xamarin.Forms.Dependency(typeof(MassageApp.iOS.iOSPlatform))]
+[assembly: Xamarin.Forms.Dependency(typeof(MassageApp.iOS.iOSSocialLogin))]
 namespace MassageApp.iOS
 {
-	class iOSPlatform : IPlatform
+	class iOSSocialLogin : ISocialLogin
 	{
 		private TaskCompletionSource<MobileServiceUser> tcs; // used in LoginFacebookAsync
 
-		public iOSPlatform()
+		public iOSSocialLogin()
 		{
 		}
 

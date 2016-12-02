@@ -7,7 +7,7 @@
 	<key>CFBundleName</key>
 	<string>MassageApp.Provider</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.mahdia.massageapp-provider</string>
+	<string>com.mahdia.massage.provider</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

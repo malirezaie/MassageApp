@@ -60,7 +60,7 @@ namespace MassageApp
 			//	return; // can't authenticate
 			//}
 
-			var mobileClient = DependencyService.Get<IPlatform>();
+			var mobileClient = DependencyService.Get<ISocialLogin>();
 
 			var user =
 				authOption == Settings.AuthOption.Facebook ?

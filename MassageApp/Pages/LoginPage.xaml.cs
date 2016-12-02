@@ -53,7 +53,6 @@ namespace MassageApp
 			//TODO: DependencyService.Get<IPlatform>().LogEvent("Login" + option);
 
 			await Navigation.PopModalAsync();
-			//await Navigation.PushModalAsync(new MainMasterDetail());
 
 			tcs.TrySetResult(option);
 		}

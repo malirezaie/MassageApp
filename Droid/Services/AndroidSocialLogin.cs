@@ -19,14 +19,14 @@ using Xamarin.Facebook;
 using Xamarin.Facebook.Login;
 using Android.App;
 
-[assembly: Xamarin.Forms.Dependency(typeof(MassageApp.Droid.AndroidSocialLogin))]
+[assembly: Xamarin.Forms.Dependency(typeof(MassageApp.Droid.AndroidPlatform))]
 namespace MassageApp.Droid
 {
-	class AndroidSocialLogin : ISocialLogin
+	class AndroidPlatform : ISocialLogin
 	{
 		private TaskCompletionSource<MobileServiceUser> tcs; // used in LoginFacebookAsync
 
-		public AndroidSocialLogin()
+		public AndroidPlatform()
 		{
 		}
 

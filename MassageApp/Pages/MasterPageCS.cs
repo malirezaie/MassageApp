@@ -10,6 +10,7 @@ namespace MassageApp
 		public ListView ListView { get { return listView; } }
 
 		ListView listView;
+		public Button logoutButton;
 
 		public bool TIMEKIT_AUTH;
 
@@ -53,18 +54,10 @@ namespace MassageApp
 			};
 
 
-			Button logoutButton = new Button
+			logoutButton = new Button
 			{
 				Text="Logout",
 				HorizontalOptions = LayoutOptions.FillAndExpand
-			};
-
-			logoutButton.Clicked += async (sender, e) =>
-			{
-				await Navigation.PushModalAsync(new LoginPage());
-
-				var platform = DependencyService.Get<IPlatform>();
-				await platform.LogoutAsync();
 			};
 
 			TIMEKIT_AUTH = !string.IsNullOrEmpty(Settings.Current.TimeKitUser.email);

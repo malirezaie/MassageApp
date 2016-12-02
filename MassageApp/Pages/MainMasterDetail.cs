@@ -14,6 +14,14 @@ namespace MassageApp
 			Master = masterPage;
 			Detail = new NavigationPage(new MainMassagePage());//new DetailPageCS());
         	
+			masterPage.logoutButton.Clicked += async (sender, e) =>
+			{
+				closeDrawer();
+				await Navigation.PushModalAsync(new LoginPage());
+				var platform = DependencyService.Get<ISocialLogin>();
+				await platform.LogoutAsync();
+			};
+
     	}
 
 		public void closeDrawer()
