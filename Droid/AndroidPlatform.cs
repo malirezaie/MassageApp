@@ -53,8 +53,11 @@ namespace MassageApp.Droid
 				tcs.TrySetResult(user);
 			}
 			else {
+
+				var activity = Xamarin.Forms.Forms.Context as Android.App.Activity;
+
 				MainActivity.DefaultService.SetPlatformCallback(this); // set context for facebook callbacks
-				LoginManager.Instance.LogInWithReadPermissions(MainActivity.instance, new[] { "public_profile","email" });
+				LoginManager.Instance.LogInWithReadPermissions(activity, new[] { "public_profile","email" });
 			}
 			return tcs.Task;
 		}

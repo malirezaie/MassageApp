@@ -13,14 +13,15 @@ using Xamarin.Forms;
 using Android.Content;
 
 [assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "cd0602d475ce4079bcf3761406a939ed")]
+//[assembly: MetaData("com.facebook.sdk.ApplicationId",Value="@string/facebook_app_id")]
 namespace MassageApp.Droid
 {
 	[Activity(Label = "MassageApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		public static MainActivity instance;
-		private ICallbackManager callbackManager;
-		private FacebookCallback facebookCallback = new FacebookCallback();
+		public ICallbackManager callbackManager;
+		public FacebookCallback facebookCallback;
 
 
 		protected override void OnCreate(Bundle bundle)
@@ -40,6 +41,8 @@ namespace MassageApp.Droid
 
 			global::Xamarin.Forms.Forms.Init(this, bundle);
 
+			#region screen height & width
+
 			var pixels = Resources.DisplayMetrics.WidthPixels;
 			var scale = Resources.DisplayMetrics.Density;
 
@@ -51,6 +54,18 @@ namespace MassageApp.Droid
 			dps = (double)((pixels - 0.5f) / scale);
 
 			App.ScreenHeight = dps;
+
+			#endregion
+
+			#region fb init
+
+			FacebookSdk.SdkInitialize(this);
+			callbackManager = CallbackManagerFactory.Create();
+			facebookCallback = new FacebookCallback();
+
+			Xamarin.Facebook.Login.LoginManager.Instance.RegisterCallback(callbackManager, facebookCallback);
+			#endregion
+
 
 			LoadApplication(new App());
 		}
@@ -66,6 +81,13 @@ namespace MassageApp.Droid
 			base.OnPause();
 			Tracking.StopUsage(this);
 		}
+
+		protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
+		{
+			base.OnActivityResult(requestCode, resultCode, data);
+			callbackManager.OnActivityResult(requestCode, (int)resultCode, data);
+		}
+
 
 		public static MainActivity DefaultService
 		{
@@ -87,7 +109,7 @@ namespace MassageApp.Droid
 
 	}
 
-	class FacebookCallback : Java.Lang.Object, IFacebookCallback
+	public class FacebookCallback : Java.Lang.Object, IFacebookCallback
 	{
 		internal AndroidPlatform platform;
 
