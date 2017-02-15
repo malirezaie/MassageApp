@@ -13,7 +13,7 @@ using Xamarin.Forms;
 using Android.Content;
 
 [assembly: MetaData("net.hockeyapp.android.appIdentifier", Value = "cd0602d475ce4079bcf3761406a939ed")]
-//[assembly: MetaData("com.facebook.sdk.ApplicationId",Value="@string/facebook_app_id")]
+
 namespace MassageApp.Droid
 {
 	[Activity(Label = "MassageApp.Droid", Icon = "@drawable/icon", Theme = "@style/MyTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

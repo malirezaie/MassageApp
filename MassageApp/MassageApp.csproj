@@ -61,7 +61,7 @@
     </Compile>
     <Compile Include="AuthHandler.cs" />
     <Compile Include="Helpers\AuthStore.cs" />
-    <Compile Include="Interfaces\IPlatform.cs" />
+    <Compile Include="Interfaces\ISocialLogin.cs" />
     <Compile Include="App.cs" />
     <Compile Include="Interfaces\IStripe.cs" />
     <Compile Include="Helpers\HockeyAppHelpers.cs" />

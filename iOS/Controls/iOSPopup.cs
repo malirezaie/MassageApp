@@ -4,6 +4,7 @@ using MassageApp.iOS;
 using System.Collections.Generic;
 using UIKit;
 using System.Threading.Tasks;
+using Foundation;
 
 [assembly: Dependency(typeof(iOSPopup))]
 namespace MassageApp.iOS
@@ -76,11 +77,9 @@ namespace MassageApp.iOS
 			var taskCompletionSource = new TaskCompletionSource<string>();
 
 			var alert = UIAlertController.Create(
-			  _model.Title,_model.message, UIAlertControllerStyle.ActionSheet);
+			  null,_model.message, UIAlertControllerStyle.ActionSheet);
 
-			/*alert.AddTextField(textField =>
-			{
-			});*/
+			alert.SetValueForKey(new NSAttributedString(_model.Title, null, UIColor.Red), new NSString("attributedTitle"));
 
 			foreach (string i in _model._options)
 			{
